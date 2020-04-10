@@ -1,34 +1,40 @@
 from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
+from map import Map
+import copy
 	
 class RandomModelGenerator:
 
-	def __init__(self, map, num_angles, move_speed):
+	def __init__(self, map, num_angles=4, move_speed=1):
 		angles = get_angles(num_angles)
 		
 		self.approximations = []
 		for angle in angles:
-			self.approximations.append(GridMovementApproximation(angle, move_speed))
+			self.approximations.append(GridMovementApproximation(angle, move_speed, map))
 			
-		self.height = len(map)
-		self.width = len(map[0])
+		self.map = map
 	
 	def __str__(self):
 		model = "mdp\n\n"
 		
 		model += "//CONSTANTS\n"
-		model += "const int " + LabelGenerator.w + " = " + str(self.width) + ";\n"
-		model += "const int " + LabelGenerator.h + " = " + str(self.height) + ";\n\n"
+		model += "const int " + LabelGenerator.w + " = " + str(self.map.width) + ";\n"
+		model += "const int " + LabelGenerator.h + " = " + str(self.map.height) + ";\n\n"
 		
-		model += "//Formula for checking if the robot can move along each angle\n"
+		model += "//Formula for checking if movement along an angle is in bounds\n"
 		for approx in self.approximations:
 			model += approx.moveForumaText + "\n";
 		model += "\n"
 		
+		model += "//Formula for checking if movement along an angle collides with obstacles\n"
+		for approx in self.approximations:
+			model += approx.obstacleFormulaTest + "\n";
+		model += "\n"
+		
 		model += "module random_robot\n\n"
 		
-		states =  LabelGenerator.x + " : [1.." + str(self.width) + "] init 1; // robot x position\n"
-		states += LabelGenerator.y + " : [1.." + str(self.height) + "] init 1; // robot y position\n"
+		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 1; // robot x position\n"
+		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init 1; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 0; // possible robot directions\n"
 		states += "\n"
 		
@@ -36,7 +42,7 @@ class RandomModelGenerator:
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
 			# Add boolean state specifier
-			states += "[] (dir=" + str(i) + " & " + approx.moveFormula + ") -> 1 : "
+			states += "[] (dir=" + str(i) + " & " + approx.moveFormula + " & " + approx.obstacleFormula + ") -> 1 : "
 			# Add how x state changes
 			states += "(" + LabelGenerator.x + "'=" + LabelGenerator.x;
 			if approx.delta[0] > 0:
@@ -61,7 +67,7 @@ class RandomModelGenerator:
 			approx = self.approximations[i];
 			
 			# Add boolean state specifier
-			states += "[] (dir=" + str(i) + " & !" + approx.moveFormula + ") -> "
+			states += "[] (dir=" + str(i) + " & !(" + approx.moveFormula + " & " + approx.obstacleFormula + ")) -> "
 			states += transition + ";\n"
 		
 		for line in states.split("\n"):
@@ -69,17 +75,23 @@ class RandomModelGenerator:
 		
 		model += "endmodule"
 		
+		# Add obstacle models
+		obstacles = copy.copy(map.obstacles)
+		count = 0
+		for obstacle in obstacles:
+			model += "\nmodule obstacle" + str(count) + "\n"
+			count += 1
+			model += "\t" + obstacle.x + " : int init " + str(obstacle.xVal) + ";\n"
+			model += "\t" + obstacle.y + " : int init " + str(obstacle.yVal) + ";\n"
+			model += "endmodule"
+		
 		return model
 	
 
 if __name__ == "__main__":
-	width = 23
-	height = 41
-	
-	row = [0] * width
-	map = []
-	for i in range(height):
-		map.append(row)
+	map = Map(10, 10)
+	map.add_obstacle(9, 1)
+	map.add_obstacle(8, 4)
 		
-	model = RandomModelGenerator(map, 20, 5)
+	model = RandomModelGenerator(map, num_angles=4, move_speed=1)
 	print(model)

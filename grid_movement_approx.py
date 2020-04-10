@@ -1,5 +1,7 @@
 import math 
 from label_generator import LabelGenerator
+from map import Map
+import copy
 
 # Returns 'number' precomputed angles
 # evenly distributed between [0 and 2pi)
@@ -37,7 +39,7 @@ def calculte_delta(angle, move_speed):
 	
 class GridMovementApproximation:
 	counter = 0
-	def __init__(self, angle, move_speed):
+	def __init__(self, angle, move_speed, map):
 		self.name = "A" + str(GridMovementApproximation.counter)
 		GridMovementApproximation.counter += 1
 		
@@ -63,7 +65,10 @@ class GridMovementApproximation:
 		path.append(self.delta)
 		
 		self.moveFormula = "move" + self.name
-		self.moveForumaText = "formula move" + self.name + " = " + self.labelGenerator.isPathValid(path) + ";"
+		self.moveForumaText = "formula move" + self.name + " = " + self.labelGenerator.isPathValid(copy.copy(path)) + ";"
+		
+		self.obstacleFormula = "collide" + self.name
+		self.obstacleFormulaTest = "formula collide" + self.name + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, copy.copy(path)) + ";"
 			
 	def __str__(self):
 		out =  "name: " + self.name + "\n"
@@ -72,14 +77,19 @@ class GridMovementApproximation:
 		out += "delta: " + str(self.delta) + "\n"
 		out += "passed: " + str(self.passed) + "\n"
 		out += "label: " + self.moveForumaText + "\n"
+		out += "obstacle formula: " + self.obstacleFormulaTest + "\n";
 		return out
 
 if __name__ == "__main__":
-	angles = get_angles(8)
+	angles = get_angles(4)
+	
+	map = Map(10, 10)
+	map.add_obstacle(0, 9)
+	map.add_obstacle(1, 9)
 	
 	approximations = []
 	for angle in angles:
-		approximations.append(GridMovementApproximation(angle, 10))
+		approximations.append(GridMovementApproximation(angle, 1, map))
 		
 	for approx in approximations:
 		print(approx)
