@@ -1,6 +1,6 @@
 # File Summary
 
-### model_generator
+### random_model_generator
 
 This file has the main method. It also has the class `RandomModelGenerator`, which can output a mdp model of the `random` robot. Running this file will output one such model. Within the main method are variables allowing one to set:
 
