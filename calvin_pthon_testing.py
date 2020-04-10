@@ -1,83 +1,85 @@
-import math 
+from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
+	
+class ModelGenerator:
 
-# Returns 'number' precomputed angles
-# evenly distributed between [0 and 2pi)
-def get_angles(number):
-	inc = (2 * math.pi) / (number)
-	
-	vals = []
-	for i in range(0, number):
-		vals.append(i * inc)
+	def __init__(self, map, num_angles, move_speed):
+		angles = get_angles(num_angles)
 		
-	return vals
+		self.approximations = []
+		for angle in angles:
+			self.approximations.append(GridMovementApproximation(angle, move_speed))
+			
+		self.height = len(map)
+		self.width = len(map[0])
 	
-# Given an angle and a move speed, calculates rounded delta 
-# over x and y returns a (dx, dy), where dx and dy have been 
-# rounded to tile size. Value assume standard cartesian plane.
-# 
-# angle: an angle in radians
-# move_speed: speed in number of tiles, eg 10 = 10 tiles
-def calculte_delta(angle, move_speed):
-
-	dx = move_speed * math.cos(angle)
-	dy = move_speed * math.sin(angle)
-			
-	# Round each variable to the nearest whole number / tile
-	if(dx >= 0):
-		dx = math.floor(dx + 0.5)
-	else:
-		dx = math.ceil(dx - 0.5)
-	if(dy >= 0):
-		dy = math.floor(dy + 0.5)
-	else:
-		dy = math.ceil(dy - 0.5)
-	
-	return (dx, dy)
-	
-class GridMovementApproximation:
-	counter = 0
-	def __init__(self, angle, move_speed):
-		self.name = "a" + str(GridMovementApproximation.counter)
-		GridMovementApproximation.counter += 1
-		
-		self.angle = angle
-		self.speed = move_speed
-		self.delta = calculte_delta(angle, move_speed)
-		
-		# Calculate approximate list of tiles we pass through
-		# if the delta is applied by checking tiles for every
-		# move speed lest than move_speed, adding them all to
-		# a set
-		self.passed = set()
-		for i in range(1, move_speed):
-			delta = calculte_delta(angle, i)
-			self.passed.add(delta)
-			
-		if self.delta in self.passed:
-			self.passed.remove(self.delta)
-			
-		self.labelGenerator = LabelGenerator()
-		
-		path = list(self.passed.copy())
-		path.append(self.delta)
-		self.moveLabel = self.labelGenerator.isPathValid(path)
-			
 	def __str__(self):
-		out =  "name: " + self.name + "\n"
-		out += "angle: " + str(self.angle) + "\n"
-		out += "speed: " + str(self.speed) + "\n"
-		out += "delta: " + str(self.delta) + "\n"
-		out += "passed: " + str(self.passed) + "\n"
-		out += "label: " + self.moveLabel + "\n"
-		return out
+		model = "mdp\n\n"
+		
+		model += "//CONSTANTS\n"
+		model += "const int " + LabelGenerator.w + " = " + str(self.width) + ";\n"
+		model += "const int " + LabelGenerator.h + " = " + str(self.height) + ";\n\n"
+		
+		model += "//Formula for checking if the robot can move along each angle\n"
+		for approx in self.approximations:
+			model += approx.moveForumaText + "\n";
+		model += "\n"
+		
+		model += "module random_robot\n\n"
+		
+		states =  LabelGenerator.x + " : [1.." + str(self.width) + "] init 1; // robot x position\n"
+		states += LabelGenerator.y + " : [1.." + str(self.height) + "] init 1; // robot y position\n"
+		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 0; // possible robot directions\n"
+		states += "\n"
+		
+		states += "// Movement transitions when robot can move\n"
+		for i in range(len(self.approximations)):
+			approx = self.approximations[i];
+			# Add boolean state specifier
+			states += "[] (dir=" + str(i) + " & " + approx.moveFormula + ") -> 1 : "
+			# Add how x state changes
+			states += "(" + LabelGenerator.x + "'=" + LabelGenerator.x;
+			if approx.delta[0] > 0:
+				states += "+" + str(approx.delta[0])
+			elif approx.delta[0] < 0:
+				states += "-" + str(abs(approx.delta[0]))
+			# Add how y state changes
+			states += ") & (" + LabelGenerator.y + "'=" + LabelGenerator.y;
+			if approx.delta[1] > 0:
+				states += "+" + str(approx.delta[1])
+			elif approx.delta[1] < 0:
+				states += "-" + str(abs(approx.delta[1]))
+			states += ");\n"
+			
+		states += "\n// Movement transitions when robot can't move\n"
+		prob = "1 / " + str(len(self.approximations))
+		transition = prob + " : (dir'=0)"
+		for i in range(1, len(self.approximations)):
+			transition += " + " + prob + " : (dir'=" + str(i) + ")"
+		
+		for i in range(len(self.approximations)):
+			approx = self.approximations[i];
+			
+			# Add boolean state specifier
+			states += "[] (dir=" + str(i) + " & !" + approx.moveFormula + ") -> "
+			states += transition + ";\n"
+		
+		for line in states.split("\n"):
+			model += "\t" + line + "\n"
+		
+		model += "endmodule"
+		
+		return model
+	
 
 if __name__ == "__main__":
-	angles = get_angles(8)
+	width = 10
+	height = 25
 	
-	approximations = []
-	for angle in angles:
-		approximations.append(GridMovementApproximation(angle, 10))
+	row = [0] * width
+	map = []
+	for i in range(height):
+		map.append(row)
 		
-	for approx in approximations:
-		print(approx)
+	model = ModelGenerator(map, 8, 10)
+	print(model)

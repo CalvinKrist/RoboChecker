@@ -1,18 +1,24 @@
 class LabelGenerator:
 
+	# The names of the variables for robot position
+	x = "x2"
+	y = "y2"
+	
+	# Names of width and height variables
+	w = "w"
+	h = "h"
+	
 	# Takes in a map, which is a 2D array where each value is
 	# either 0 (passable) or 1 (impassable). 
 	# Grid is accessed using x,y formatting.
 	# 
 	# Possible positions are assumed to be 1 indexed
 	def __init__(self):
-		# The names of the variables for robot position
-		self.x = "x2"
-		self.y = "y2"
+		self.x = LabelGenerator.x
+		self.y = LabelGenerator.y
 		
-		# Names of width and height variables
-		self.w = "w"
-		self.h = "h"
+		self.w = LabelGenerator.w
+		self.h = LabelGenerator.h
 		
 	# Returns a label showing if its possible to traverse
 	# a certain path. Calculated by checking if each delta 
@@ -38,6 +44,8 @@ class LabelGenerator:
 			canMoveX = "(" + numXMovement + ") >= " + str(abs(dx))
 		else:
 			numXMovement = self.x + str(dx)
+			if(dx == 0):
+				numXMovement = self.x
 			canMoveX = "(" + numXMovement + ") > 0"
 		
 		if(dy > 0):
@@ -45,6 +53,8 @@ class LabelGenerator:
 			canMoveY = "(" + numYMovement + ") >= " + str(abs(dy))
 		else:
 			numYMovement = self.y + str(dy)
+			if(dy == 0):
+				numYMovement = self.y
 			canMoveY = "(" + numYMovement + ") > 0"
 		
 		return "(" + canMoveX + ") & (" + canMoveY + ")" 
