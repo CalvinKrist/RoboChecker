@@ -1,7 +1,7 @@
 from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
 	
-class ModelGenerator:
+class RandomModelGenerator:
 
 	def __init__(self, map, num_angles, move_speed):
 		angles = get_angles(num_angles)
@@ -73,13 +73,13 @@ class ModelGenerator:
 	
 
 if __name__ == "__main__":
-	width = 10
-	height = 25
+	width = 23
+	height = 41
 	
 	row = [0] * width
 	map = []
 	for i in range(height):
 		map.append(row)
 		
-	model = ModelGenerator(map, 8, 10)
+	model = RandomModelGenerator(map, 20, 5)
 	print(model)
