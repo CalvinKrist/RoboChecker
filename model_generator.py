@@ -93,5 +93,5 @@ if __name__ == "__main__":
 	map.add_obstacle(9, 1)
 	map.add_obstacle(8, 4)
 		
-	model = RandomModelGenerator(map, num_angles=4, move_speed=1)
+	model = RandomModelGenerator(map, num_angles=8, move_speed=4)
 	print(model)

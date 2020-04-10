@@ -61,11 +61,11 @@ class GridMovementApproximation:
 			
 		self.labelGenerator = LabelGenerator()
 		
+		self.moveFormula = "move" + self.name
+		self.moveForumaText = "formula move" + self.name + " = " + self.labelGenerator.isDeltaValid(self.delta[0], self.delta[1]) + ";"
+		
 		path = list(self.passed.copy())
 		path.append(self.delta)
-		
-		self.moveFormula = "move" + self.name
-		self.moveForumaText = "formula move" + self.name + " = " + self.labelGenerator.isPathValid(copy.copy(path)) + ";"
 		
 		self.obstacleFormula = "collide" + self.name
 		self.obstacleFormulaTest = "formula collide" + self.name + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, copy.copy(path)) + ";"
@@ -81,7 +81,7 @@ class GridMovementApproximation:
 		return out
 
 if __name__ == "__main__":
-	angles = get_angles(4)
+	angles = get_angles(7)
 	
 	map = Map(10, 10)
 	map.add_obstacle(0, 9)
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 	
 	approximations = []
 	for angle in angles:
-		approximations.append(GridMovementApproximation(angle, 1, map))
+		approximations.append(GridMovementApproximation(angle, 4, map))
 		
 	for approx in approximations:
 		print(approx)
