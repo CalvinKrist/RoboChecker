@@ -77,7 +77,7 @@ class GridMovementApproximation:
 		for delta in self.path:
 			path_copy = list(self.path.copy())
 			obstacleFormula = "collide" + self.name + str(i)
-			obstacleFormulaTest = "formula " + obstacleFormula + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, path_copy) + ";"
+			obstacleFormulaTest = "formula " + obstacleFormula + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, [path_copy[i]]) + ";"
 			self.obstacle_formulas[obstacleFormula] = obstacleFormulaTest;
 			i += 1
 			
