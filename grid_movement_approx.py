@@ -47,45 +47,56 @@ class GridMovementApproximation:
 		self.speed = move_speed
 		self.delta = calculte_delta(angle, move_speed)
 		
-		# Calculate approximate list of tiles we pass through
-		# if the delta is applied by checking tiles for every
-		# move speed lest than move_speed, adding them all to
-		# a set
-		self.passed = set()
-		for i in range(1, move_speed):
+		# Calculate the path for the movement
+		delta_list = []
+		for i in range(1, move_speed + 1):
 			delta = calculte_delta(angle, i)
-			self.passed.add(delta)
+			delta_list.append(delta)
 			
-		if self.delta in self.passed:
-			self.passed.remove(self.delta)
+		self.path = []
+		x = 0
+		y = 0
+		for i in range(len(delta_list)):
+			delta = delta_list[i]
+			self.path.append((delta[0] - x, delta[1] - y))
+			x = delta[0]
+			y = delta[1]
 			
 		self.labelGenerator = LabelGenerator()
 		
-		self.moveFormula = "move" + self.name
-		self.moveForumaText = "formula move" + self.name + " = " + self.labelGenerator.isDeltaValid(self.delta[0], self.delta[1]) + ";"
+		self.move_formulas = {}
+		i = 0
+		for delta in self.path:
+			moveFormula = "move" + self.name + str(i)
+			moveForumaText = "formula " + moveFormula + " = " + self.labelGenerator.isDeltaValid(delta[0], delta[1]) + ";"
+			self.move_formulas[moveFormula] = moveForumaText;
+			i+=1
 		
-		path = list(self.passed.copy())
-		path.append(self.delta)
-		
-		self.obstacleFormula = "collide" + self.name
-		self.obstacleFormulaTest = "formula collide" + self.name + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, copy.copy(path)) + ";"
+		self.obstacle_formulas = {}
+		i = 0
+		for delta in self.path:
+			path_copy = list(self.path.copy())
+			obstacleFormula = "collide" + self.name + str(i)
+			obstacleFormulaTest = "formula " + obstacleFormula + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, path_copy) + ";"
+			self.obstacle_formulas[obstacleFormula] = obstacleFormulaTest;
+			i += 1
 			
 	def __str__(self):
 		out =  "name: " + self.name + "\n"
 		out += "angle: " + str(self.angle) + "\n"
 		out += "speed: " + str(self.speed) + "\n"
 		out += "delta: " + str(self.delta) + "\n"
-		out += "passed: " + str(self.passed) + "\n"
-		out += "label: " + self.moveForumaText + "\n"
-		out += "obstacle formula: " + self.obstacleFormulaTest + "\n";
+		out += "path: " + str(self.path) + "\n"
+		out += "move formulas: " + str(self.move_formulas) + "\n"
+		out += "obstacle formulas: " + str(self.obstacle_formulas) + "\n"
 		return out
 
 if __name__ == "__main__":
 	angles = get_angles(7)
 	
 	map = Map(10, 10)
-	map.add_obstacle(0, 9)
-	map.add_obstacle(1, 9)
+	#map.add_obstacle(0, 9)
+	#map.add_obstacle(1, 9)
 	
 	approximations = []
 	for angle in angles:

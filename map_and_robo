@@ -4,38 +4,379 @@ mdp
 const int w = 10;
 const int h = 10;
 
-//Formula for checking if movement along an angle is in bounds
-formula moveA0 = ((w-x2 >= 1) & (y2 > 0));
-formula moveA1 = ((x2 > 0) & (h-y2 >= 1));
-formula moveA2 = ((x2-1 > 0) & (y2 > 0));
-formula moveA3 = ((x2 > 0) & (y2-1 > 0));
+//Formulas for checking if movement along an angle is in bounds
+formula moveA00 = (w-x2 >= 1) & (y2 > 0);
+formula moveA01 = (w-x2 >= 1) & (y2 > 0);
+formula moveA02 = (w-x2 >= 1) & (y2 > 0);
+formula moveA03 = (w-x2 >= 1) & (y2 > 0);
+formula moveA04 = (w-x2 >= 1) & (y2 > 0);
+formula moveA05 = (w-x2 >= 1) & (y2 > 0);
+formula moveA06 = (w-x2 >= 1) & (y2 > 0);
+formula moveA07 = (w-x2 >= 1) & (y2 > 0);
+
+formula moveA10 = (w-x2 >= 1) & (h-y2 >= 1);
+formula moveA11 = (w-x2 >= 1) & (y2 > 0);
+formula moveA12 = (x2 > 0) & (h-y2 >= 1);
+formula moveA13 = (w-x2 >= 1) & (y2 > 0);
+formula moveA14 = (w-x2 >= 1) & (h-y2 >= 1);
+formula moveA15 = (w-x2 >= 1) & (h-y2 >= 1);
+formula moveA16 = (w-x2 >= 1) & (y2 > 0);
+formula moveA17 = (x2 > 0) & (h-y2 >= 1);
+
+formula moveA20 = (x2 > 0) & (h-y2 >= 1);
+formula moveA21 = (w-x2 >= 1) & (h-y2 >= 1);
+formula moveA22 = (x2 > 0) & (h-y2 >= 1);
+formula moveA23 = (x2 > 0) & (h-y2 >= 1);
+formula moveA24 = (w-x2 >= 1) & (h-y2 >= 1);
+formula moveA25 = (x2 > 0) & (h-y2 >= 1);
+formula moveA26 = (x2 > 0) & (h-y2 >= 1);
+formula moveA27 = (x2 > 0) & (h-y2 >= 1);
+
+formula moveA30 = (x2 > 0) & (h-y2 >= 1);
+formula moveA31 = (x2-1 > 0) & (h-y2 >= 1);
+formula moveA32 = (x2 > 0) & (h-y2 >= 1);
+formula moveA33 = (x2 > 0) & (h-y2 >= 1);
+formula moveA34 = (x2-1 > 0) & (h-y2 >= 1);
+formula moveA35 = (x2 > 0) & (h-y2 >= 1);
+formula moveA36 = (x2 > 0) & (h-y2 >= 1);
+formula moveA37 = (x2 > 0) & (h-y2 >= 1);
+
+formula moveA40 = (x2-1 > 0) & (h-y2 >= 1);
+formula moveA41 = (x2-1 > 0) & (y2 > 0);
+formula moveA42 = (x2 > 0) & (h-y2 >= 1);
+formula moveA43 = (x2-1 > 0) & (y2 > 0);
+formula moveA44 = (x2-1 > 0) & (h-y2 >= 1);
+formula moveA45 = (x2-1 > 0) & (h-y2 >= 1);
+formula moveA46 = (x2-1 > 0) & (y2 > 0);
+formula moveA47 = (x2 > 0) & (h-y2 >= 1);
+
+formula moveA50 = (x2-1 > 0) & (y2 > 0);
+formula moveA51 = (x2-1 > 0) & (y2 > 0);
+formula moveA52 = (x2-1 > 0) & (y2 > 0);
+formula moveA53 = (x2-1 > 0) & (y2 > 0);
+formula moveA54 = (x2-1 > 0) & (y2 > 0);
+formula moveA55 = (x2-1 > 0) & (y2 > 0);
+formula moveA56 = (x2-1 > 0) & (y2 > 0);
+formula moveA57 = (x2-1 > 0) & (y2 > 0);
+
+formula moveA60 = (x2-1 > 0) & (y2-1 > 0);
+formula moveA61 = (x2-1 > 0) & (y2 > 0);
+formula moveA62 = (x2 > 0) & (y2-1 > 0);
+formula moveA63 = (x2-1 > 0) & (y2 > 0);
+formula moveA64 = (x2-1 > 0) & (y2-1 > 0);
+formula moveA65 = (x2-1 > 0) & (y2-1 > 0);
+formula moveA66 = (x2-1 > 0) & (y2 > 0);
+formula moveA67 = (x2 > 0) & (y2-1 > 0);
+
+formula moveA70 = (x2 > 0) & (y2-1 > 0);
+formula moveA71 = (x2-1 > 0) & (y2-1 > 0);
+formula moveA72 = (x2 > 0) & (y2-1 > 0);
+formula moveA73 = (x2 > 0) & (y2-1 > 0);
+formula moveA74 = (x2-1 > 0) & (y2-1 > 0);
+formula moveA75 = (x2 > 0) & (y2-1 > 0);
+formula moveA76 = (x2 > 0) & (y2-1 > 0);
+formula moveA77 = (x2 > 0) & (y2-1 > 0);
+
+formula moveA80 = (x2 > 0) & (y2-1 > 0);
+formula moveA81 = (w-x2 >= 1) & (y2-1 > 0);
+formula moveA82 = (x2 > 0) & (y2-1 > 0);
+formula moveA83 = (x2 > 0) & (y2-1 > 0);
+formula moveA84 = (w-x2 >= 1) & (y2-1 > 0);
+formula moveA85 = (x2 > 0) & (y2-1 > 0);
+formula moveA86 = (x2 > 0) & (y2-1 > 0);
+formula moveA87 = (x2 > 0) & (y2-1 > 0);
+
+formula moveA90 = (w-x2 >= 1) & (y2-1 > 0);
+formula moveA91 = (w-x2 >= 1) & (y2 > 0);
+formula moveA92 = (x2 > 0) & (y2-1 > 0);
+formula moveA93 = (w-x2 >= 1) & (y2 > 0);
+formula moveA94 = (w-x2 >= 1) & (y2-1 > 0);
+formula moveA95 = (w-x2 >= 1) & (y2-1 > 0);
+formula moveA96 = (w-x2 >= 1) & (y2 > 0);
+formula moveA97 = (x2 > 0) & (y2-1 > 0);
+
 
 //Formula for checking if movement along an angle collides with obstacles
-formula collideA0 = (x2+1!=ox0 & y2!=oy0);
-formula collideA1 = (x2!=ox0 & y2+1!=oy0);
-formula collideA2 = (x2-1!=ox0 & y2!=oy0);
-formula collideA3 = (x2!=ox0 & y2-1!=oy0);
+formula collideA00 = true;
+formula collideA01 = true;
+formula collideA02 = true;
+formula collideA03 = true;
+formula collideA04 = true;
+formula collideA05 = true;
+formula collideA06 = true;
+formula collideA07 = true;
+
+formula collideA10 = true;
+formula collideA11 = true;
+formula collideA12 = true;
+formula collideA13 = true;
+formula collideA14 = true;
+formula collideA15 = true;
+formula collideA16 = true;
+formula collideA17 = true;
+
+formula collideA20 = true;
+formula collideA21 = true;
+formula collideA22 = true;
+formula collideA23 = true;
+formula collideA24 = true;
+formula collideA25 = true;
+formula collideA26 = true;
+formula collideA27 = true;
+
+formula collideA30 = true;
+formula collideA31 = true;
+formula collideA32 = true;
+formula collideA33 = true;
+formula collideA34 = true;
+formula collideA35 = true;
+formula collideA36 = true;
+formula collideA37 = true;
+
+formula collideA40 = true;
+formula collideA41 = true;
+formula collideA42 = true;
+formula collideA43 = true;
+formula collideA44 = true;
+formula collideA45 = true;
+formula collideA46 = true;
+formula collideA47 = true;
+
+formula collideA50 = true;
+formula collideA51 = true;
+formula collideA52 = true;
+formula collideA53 = true;
+formula collideA54 = true;
+formula collideA55 = true;
+formula collideA56 = true;
+formula collideA57 = true;
+
+formula collideA60 = true;
+formula collideA61 = true;
+formula collideA62 = true;
+formula collideA63 = true;
+formula collideA64 = true;
+formula collideA65 = true;
+formula collideA66 = true;
+formula collideA67 = true;
+
+formula collideA70 = true;
+formula collideA71 = true;
+formula collideA72 = true;
+formula collideA73 = true;
+formula collideA74 = true;
+formula collideA75 = true;
+formula collideA76 = true;
+formula collideA77 = true;
+
+formula collideA80 = true;
+formula collideA81 = true;
+formula collideA82 = true;
+formula collideA83 = true;
+formula collideA84 = true;
+formula collideA85 = true;
+formula collideA86 = true;
+formula collideA87 = true;
+
+formula collideA90 = true;
+formula collideA91 = true;
+formula collideA92 = true;
+formula collideA93 = true;
+formula collideA94 = true;
+formula collideA95 = true;
+formula collideA96 = true;
+formula collideA97 = true;
+
 
 module random_robot
 
-        x2 : [1..10] init 1; // robot x position
-        y2 : [1..10] init 1; // robot y position
-        dir : [0..3] init 0; // possible robot directions
-
-        // Movement transitions when robot can move
-        [] (dir=0 & moveA0 & collideA0) -> 1 : (x2'=x2+1) & (y2'=y2);
-        [] (dir=1 & moveA1 & collideA1) -> 1 : (x2'=x2) & (y2'=y2+1);
-        [] (dir=2 & moveA2 & collideA2) -> 1 : (x2'=x2-1) & (y2'=y2);
-        [] (dir=3 & moveA3 & collideA3) -> 1 : (x2'=x2) & (y2'=y2-1);
-
-        // Movement transitions when robot can't move
-        [] (dir=0 & !moveA0) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) + 1 / 4 : (dir'=2) + 1 / 4 : (dir'=3);
-        [] (dir=1 & !moveA1) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) + 1 / 4 : (dir'=2) + 1 / 4 : (dir'=3);
-        [] (dir=2 & !moveA2) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) + 1 / 4 : (dir'=2) + 1 / 4 : (dir'=3);
-        [] (dir=3 & !moveA3) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) + 1 / 4 : (dir'=2) + 1 / 4 : (dir'=3);
-
-endmodule
-module obstacle0
-        ox0 : int init 9;
-        oy0 : int init 1;
+	x2 : [1..10] init 1; // robot x position
+	y2 : [1..10] init 1; // robot y position
+	dir : [0..9] init 0; // possible robot directions
+	counter : [0..8] init 0; // if the robot is moving
+	
+	// Movement transitions when robot can move
+	[] (dir=0 & moveA00 & collideA00 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA01 & collideA01 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA02 & collideA02 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA03 & collideA03 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA04 & collideA04 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA05 & collideA05 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA06 & collideA06 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=0 & moveA07 & collideA07 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	
+	[] (dir=1 & moveA10 & collideA10 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2+1);
+	[] (dir=1 & moveA11 & collideA11 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=1 & moveA12 & collideA12 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=1 & moveA13 & collideA13 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=1 & moveA14 & collideA14 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2+1);
+	[] (dir=1 & moveA15 & collideA15 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2+1);
+	[] (dir=1 & moveA16 & collideA16 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2);
+	[] (dir=1 & moveA17 & collideA17 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	
+	[] (dir=2 & moveA20 & collideA20 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=2 & moveA21 & collideA21 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2+1);
+	[] (dir=2 & moveA22 & collideA22 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=2 & moveA23 & collideA23 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=2 & moveA24 & collideA24 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2+1);
+	[] (dir=2 & moveA25 & collideA25 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=2 & moveA26 & collideA26 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=2 & moveA27 & collideA27 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	
+	[] (dir=3 & moveA30 & collideA30 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=3 & moveA31 & collideA31 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2+1);
+	[] (dir=3 & moveA32 & collideA32 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=3 & moveA33 & collideA33 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=3 & moveA34 & collideA34 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2+1);
+	[] (dir=3 & moveA35 & collideA35 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=3 & moveA36 & collideA36 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=3 & moveA37 & collideA37 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	
+	[] (dir=4 & moveA40 & collideA40 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2+1);
+	[] (dir=4 & moveA41 & collideA41 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=4 & moveA42 & collideA42 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	[] (dir=4 & moveA43 & collideA43 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=4 & moveA44 & collideA44 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2+1);
+	[] (dir=4 & moveA45 & collideA45 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2+1);
+	[] (dir=4 & moveA46 & collideA46 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=4 & moveA47 & collideA47 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2+1);
+	
+	[] (dir=5 & moveA50 & collideA50 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA51 & collideA51 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA52 & collideA52 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA53 & collideA53 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA54 & collideA54 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA55 & collideA55 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA56 & collideA56 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	[] (dir=5 & moveA57 & collideA57 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2);
+	
+	[] (dir=6 & moveA60 & collideA60 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-1);
+	[] (dir=6 & moveA61 & collideA61 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-0);
+	[] (dir=6 & moveA62 & collideA62 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=6 & moveA63 & collideA63 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-0);
+	[] (dir=6 & moveA64 & collideA64 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-1);
+	[] (dir=6 & moveA65 & collideA65 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-1);
+	[] (dir=6 & moveA66 & collideA66 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-0);
+	[] (dir=6 & moveA67 & collideA67 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	
+	[] (dir=7 & moveA70 & collideA70 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=7 & moveA71 & collideA71 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-1);
+	[] (dir=7 & moveA72 & collideA72 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=7 & moveA73 & collideA73 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=7 & moveA74 & collideA74 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2-1) & (y2'=y2-1);
+	[] (dir=7 & moveA75 & collideA75 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=7 & moveA76 & collideA76 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=7 & moveA77 & collideA77 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	
+	[] (dir=8 & moveA80 & collideA80 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=8 & moveA81 & collideA81 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-1);
+	[] (dir=8 & moveA82 & collideA82 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=8 & moveA83 & collideA83 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=8 & moveA84 & collideA84 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-1);
+	[] (dir=8 & moveA85 & collideA85 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=8 & moveA86 & collideA86 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=8 & moveA87 & collideA87 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	
+	[] (dir=9 & moveA90 & collideA90 & counter=0) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-1);
+	[] (dir=9 & moveA91 & collideA91 & counter=1) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-0);
+	[] (dir=9 & moveA92 & collideA92 & counter=2) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	[] (dir=9 & moveA93 & collideA93 & counter=3) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-0);
+	[] (dir=9 & moveA94 & collideA94 & counter=4) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-1);
+	[] (dir=9 & moveA95 & collideA95 & counter=5) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-1);
+	[] (dir=9 & moveA96 & collideA96 & counter=6) -> 1 : (counter'=counter+1) & (x2'=x2+1) & (y2'=y2-0);
+	[] (dir=9 & moveA97 & collideA97 & counter=7) -> 1 : (counter'=counter+1) & (x2'=x2) & (y2'=y2-1);
+	
+	
+	// Movement transitions when robot can't move
+	[] (dir=0 & counter=0 & !(moveA00 & collideA00)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=1 & !(moveA01 & collideA01)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=2 & !(moveA02 & collideA02)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=3 & !(moveA03 & collideA03)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=4 & !(moveA04 & collideA04)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=5 & !(moveA05 & collideA05)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=6 & !(moveA06 & collideA06)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=7 & !(moveA07 & collideA07)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=0 & counter=8) -> (counter'=0);
+	[] (dir=1 & counter=0 & !(moveA10 & collideA10)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=1 & !(moveA11 & collideA11)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=2 & !(moveA12 & collideA12)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=3 & !(moveA13 & collideA13)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=4 & !(moveA14 & collideA14)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=5 & !(moveA15 & collideA15)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=6 & !(moveA16 & collideA16)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=7 & !(moveA17 & collideA17)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=1 & counter=8) -> (counter'=0);
+	[] (dir=2 & counter=0 & !(moveA20 & collideA20)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=1 & !(moveA21 & collideA21)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=2 & !(moveA22 & collideA22)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=3 & !(moveA23 & collideA23)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=4 & !(moveA24 & collideA24)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=5 & !(moveA25 & collideA25)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=6 & !(moveA26 & collideA26)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=7 & !(moveA27 & collideA27)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=2 & counter=8) -> (counter'=0);
+	[] (dir=3 & counter=0 & !(moveA30 & collideA30)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=1 & !(moveA31 & collideA31)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=2 & !(moveA32 & collideA32)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=3 & !(moveA33 & collideA33)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=4 & !(moveA34 & collideA34)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=5 & !(moveA35 & collideA35)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=6 & !(moveA36 & collideA36)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=7 & !(moveA37 & collideA37)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=3 & counter=8) -> (counter'=0);
+	[] (dir=4 & counter=0 & !(moveA40 & collideA40)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=1 & !(moveA41 & collideA41)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=2 & !(moveA42 & collideA42)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=3 & !(moveA43 & collideA43)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=4 & !(moveA44 & collideA44)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=5 & !(moveA45 & collideA45)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=6 & !(moveA46 & collideA46)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=7 & !(moveA47 & collideA47)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=4 & counter=8) -> (counter'=0);
+	[] (dir=5 & counter=0 & !(moveA50 & collideA50)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=1 & !(moveA51 & collideA51)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=2 & !(moveA52 & collideA52)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=3 & !(moveA53 & collideA53)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=4 & !(moveA54 & collideA54)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=5 & !(moveA55 & collideA55)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=6 & !(moveA56 & collideA56)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=7 & !(moveA57 & collideA57)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=5 & counter=8) -> (counter'=0);
+	[] (dir=6 & counter=0 & !(moveA60 & collideA60)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=1 & !(moveA61 & collideA61)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=2 & !(moveA62 & collideA62)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=3 & !(moveA63 & collideA63)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=4 & !(moveA64 & collideA64)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=5 & !(moveA65 & collideA65)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=6 & !(moveA66 & collideA66)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=7 & !(moveA67 & collideA67)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=6 & counter=8) -> (counter'=0);
+	[] (dir=7 & counter=0 & !(moveA70 & collideA70)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=1 & !(moveA71 & collideA71)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=2 & !(moveA72 & collideA72)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=3 & !(moveA73 & collideA73)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=4 & !(moveA74 & collideA74)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=5 & !(moveA75 & collideA75)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=6 & !(moveA76 & collideA76)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=7 & !(moveA77 & collideA77)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=7 & counter=8) -> (counter'=0);
+	[] (dir=8 & counter=0 & !(moveA80 & collideA80)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=1 & !(moveA81 & collideA81)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=2 & !(moveA82 & collideA82)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=3 & !(moveA83 & collideA83)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=4 & !(moveA84 & collideA84)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=5 & !(moveA85 & collideA85)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=6 & !(moveA86 & collideA86)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=7 & !(moveA87 & collideA87)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=8 & counter=8) -> (counter'=0);
+	[] (dir=9 & counter=0 & !(moveA90 & collideA90)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=1 & !(moveA91 & collideA91)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=2 & !(moveA92 & collideA92)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=3 & !(moveA93 & collideA93)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=4 & !(moveA94 & collideA94)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=5 & !(moveA95 & collideA95)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=6 & !(moveA96 & collideA96)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=7 & !(moveA97 & collideA97)) -> 1 / 10 : (dir'=0) + 1 / 10 : (dir'=1) & (counter'=0) + 1 / 10 : (dir'=2) & (counter'=0) + 1 / 10 : (dir'=3) & (counter'=0) + 1 / 10 : (dir'=4) & (counter'=0) + 1 / 10 : (dir'=5) & (counter'=0) + 1 / 10 : (dir'=6) & (counter'=0) + 1 / 10 : (dir'=7) & (counter'=0) + 1 / 10 : (dir'=8) & (counter'=0) + 1 / 10 : (dir'=9) & (counter'=0);
+	[] (dir=9 & counter=8) -> (counter'=0);
+	
 endmodule
