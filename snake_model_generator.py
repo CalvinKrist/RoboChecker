@@ -7,15 +7,8 @@ import copy
 class SnakeModelGenerator(RandomModelGenerator):
 
     # No changes thus far
-	def __init__(self, map, num_angles=4, move_speed=1):
-		angles = get_angles(num_angles)
-		self.speed = move_speed
-		
-		self.approximations = []
-		for angle in angles:
-			self.approximations.append(GridMovementApproximation(angle, move_speed, map))
-			
-		self.map = map
+	def __init__(self, map, num_angles=4, move_speed=1, goal_speed = 1):
+		super().__init__(map, num_angles, move_speed)
 		self.goal_speed = 1
 
 	
@@ -149,7 +142,8 @@ class SnakeModelGenerator(RandomModelGenerator):
 
 if __name__ == "__main__":
 	map = Map(10, 10)
-	map.add_obstacle(2,9)
+	#map.add_obstacle(2,9)
 	#map.add_obstacle(8, 4)
-	model = SnakeModelGenerator(map, num_angles=8, move_speed=8)
+ 
+	model = SnakeModelGenerator(map, num_angles=4, move_speed=8, goal_speed=1)
 	print(model)

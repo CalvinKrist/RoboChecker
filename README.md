@@ -23,3 +23,8 @@ This file contains the `LabelGenerator` class, which can be used to generate lab
 
 * `h`: the name of the variable with map height
 It also has a main method that can be used to debug label generation.
+
+### snake_model_generator
+
+This file contains the `SnakeModelGenerator` class which inherits from `GridMovementApproximation` class. Running this file will give an implementation of the snake algorithm we discussed with an arbitrary number of angles/obstacles. The subclass introduces a new variable:
+* Goal Speed: the speed at which the robot approaches the goal before it turns to "snake"
