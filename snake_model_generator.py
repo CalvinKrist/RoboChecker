@@ -52,7 +52,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 			
 			# Add state specifiers for each stage of movement
 			for j in range(self.speed):
-				states += "[] (dir=" + str(i) + " & !(dir=goal & counter>="+str(self.goal_speed)+") & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=counter+1) & "
+				states += "[] (dir=" + str(i) + " & !(dir=goal & counter>="+str(self.goal_speed)+") & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=mod(counter+1,"+str(self.speed)+")) & "
 			
 				# Add how x state changes
 				delta = approx.path[j]
@@ -91,7 +91,8 @@ class SnakeModelGenerator(RandomModelGenerator):
 				states += "[] (dir=" + str(i) + " & "+direction_check+" & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 				states += transition_to_goal + ";\n"
 			# If movement is done, set counter to 0 and continue
-			states += "[] (dir=" + str(i) + " & "+direction_check+" & counter=" + str(self.speed)+") -> (counter'=0);"
+			# DONT NEED ANYMORE B/C added mod to counter increment
+			# states += "[] (dir=" + str(i) + " & "+direction_check+" & counter=" + str(self.speed)+") -> (counter'=0);"
 			states += "\n"
 		
 		states += "\n// Movement transitions when dir == goal and can't/end of move\n"
