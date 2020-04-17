@@ -9,7 +9,7 @@ class SnakeModelGenerator(RandomModelGenerator):
     # No changes thus far
 	def __init__(self, map, num_angles=4, move_speed=1, goal_speed = 1):
 		super().__init__(map, num_angles, move_speed)
-		self.goal_speed = 1
+		self.goal_speed = goal_speed
 
 	
 	def __str__(self):
@@ -33,7 +33,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 			model += "\n"
 		model += "\n"
 		
-		model += "module random_robot\n\n"
+		model += "module snake_robot\n\n"
 		
 		#Add model states and variables
 		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 1; // robot x position\n"
@@ -41,9 +41,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 1; // possible robot directions\n"
 		states += "goal : [0.." + str(len(self.approximations)-1) + "] init 0; // Robot goal direction\n"
 		states += "prevDir : [0.." + str(len(self.approximations)-1) + "] init 0; // Robot's previous direction after turning to goal\n"
-		#states += "moving : [0..1] init 0; // if the robot is moving\n"
 		states += "counter : [0.." + str(self.speed) +"] init 0; // if the robot is moving\n"
-		states += "justTurned : [0..1] init 0; // 1 if the robot just turned into goal state\n"
 		states += "\n"
 		
 		states += "// Movement transitions when robot can move, same as rand except !dir=goal\n"
@@ -73,11 +71,12 @@ class SnakeModelGenerator(RandomModelGenerator):
 			states += "\n"
 		
 		states += "\n// Movement transitions when dir != goal and can't/end of move\n"
-		prob = "1 / " + str(len(self.approximations))
+		
 		# Fully random transition not needed right now
-		transition = prob + " : (dir'=0)"
-		for i in range(1, len(self.approximations)):
-			transition += " + " + prob + " : (dir'=" + str(i) + ") & (counter'=0)"
+		# prob = "1 / " + str(len(self.approximations))
+		# transition = prob + " : (dir'=0)"
+		# for i in range(1, len(self.approximations)):
+		# 	transition += " + " + prob + " : (dir'=" + str(i) + ") & (counter'=0)"
 		
 		# For transitions when moving in direction != goalDirection, 
 		# and hit obstacle: turn to direction = goal direction
@@ -87,7 +86,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
 			
-			# Add boolean state specifier
+			# When robot hits obstacle - turn towards goal
 			for j in range(self.speed):
 				states += "[] (dir=" + str(i) + " & "+direction_check+" & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 				states += transition_to_goal + ";\n"
@@ -144,6 +143,5 @@ if __name__ == "__main__":
 	map = Map(10, 10)
 	#map.add_obstacle(2,9)
 	#map.add_obstacle(8, 4)
- 
 	model = SnakeModelGenerator(map, num_angles=4, move_speed=8, goal_speed=1)
 	print(model)
