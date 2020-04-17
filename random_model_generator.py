@@ -54,7 +54,7 @@ class RandomModelGenerator:
 			
 			# Add state specifiers for each stage of movement
 			for j in range(self.speed):
-				states += "[] (dir=" + str(i) + " & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=counter+1) & "
+				states += "[] (dir=" + str(i) + " & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=mod(counter+1,"+str(self.speed)+")) & "
 			
 				# Add how x state changes
 				delta = approx.path[j]
@@ -86,7 +86,7 @@ class RandomModelGenerator:
 				states += "[] (dir=" + str(i) + " & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 				states += transition + ";\n"
 			# If movement is done, set counter to 0 and continue
-			states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
+			# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
 			states += "\n"
 		
 		for line in states.split("\n"):
