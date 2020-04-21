@@ -28,3 +28,9 @@ It also has a main method that can be used to debug label generation.
 
 This file contains the `SnakeModelGenerator` class which inherits from `GridMovementApproximation` class. Running this file will give an implementation of the snake algorithm we discussed with an arbitrary number of angles/obstacles. The subclass introduces a new variable:
 * Goal Speed: the speed at which the robot approaches the goal before it turns to "snake"
+
+### path_generator.bat
+
+This script is used to generate paths using the PRISM command line with extended RAM. Within the script, make sure to set `PRISM_DIR` to the correct value. Additionally, for large models you may need to further expand the RAM PRISM is run with.
+
+Usage: `path_generator.bat [map_number] [step_count] [output_file]`
