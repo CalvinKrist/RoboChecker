@@ -12,6 +12,9 @@ class Map:
 		self.height = height
 		
 		self.obstacles = []
+
+		self.spawn_x = 1
+		self.spawn_y = 1
 		
 	def add_obstacle(self, x, y):
 		self.map[x][y] = 1
@@ -73,6 +76,9 @@ def get_map_1():
 	add_rect(map, [offset, map.height - w_post - offset - h_bed], [w_post, w_post])
 	# Add upper right bed post
 	add_rect(map, [offset + w_bed, map.height - w_post - offset - h_bed], [w_post, w_post])
+
+	map.spawn_x = 100
+	map.spawn_y = 100
 
 	return map
 
@@ -138,6 +144,9 @@ def get_map_2():
 		add_rect(m, [chair[0], chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 		add_rect(m, [chair[0] + w_chair, chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 
+	m.spawn_x = 15
+	m.spawn_y = 20
+
 	return m
 
 # A non-rectangular room with angled walls
@@ -184,5 +193,8 @@ def get_map_3():
 	y = delta
 	for x in range(int(m.width / 5) + delta, int(4 * m.width / 5) + 1 - delta):
 		m.add_obstacle(x, y)
+
+	m.spawn_x = 225
+	m.spawn_y = 200
 
 	return m
