@@ -1,7 +1,8 @@
 from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
-from map import Map
+from map import *
 import copy
+import sys
 	
 class RandomModelGenerator:
 
@@ -39,8 +40,8 @@ class RandomModelGenerator:
 		model += "module random_robot\n\n"
 		
 		#Add model states and variables
-		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 1; // robot x position\n"
-		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init 1; // robot y position\n"
+		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 28; // robot x position\n"
+		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init 110; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 0; // possible robot directions\n"
 		#states += "moving : [0..1] init 0; // if the robot is moving\n"
 		states += "counter : [0.." + str(self.speed) +"] init 0; // if the robot is moving\n"
@@ -108,9 +109,23 @@ class RandomModelGenerator:
 	
 
 if __name__ == "__main__":
-	map = Map(10, 10)
-	#map.add_obstacle(9, 1)
-	#map.add_obstacle(8, 4)
-		
-	model = RandomModelGenerator(map, num_angles=10, move_speed=8)
+
+	if len(sys.argv) < 2:
+		print("Please specify a map - 1, 2, or 3")
+		exit(1)
+
+	map_index = sys.argv[1]
+
+	map = get_map_1()
+	if map_index == "1":
+		map = get_map_1()
+	elif map_index == "2":
+		map = get_map_2()
+	elif map_index == "3":
+		map = get_map_3()
+	else:
+		print("Invalid map specified")
+		exit(1)
+
+	model = RandomModelGenerator(map, num_angles=25, move_speed=10)
 	print(model)
