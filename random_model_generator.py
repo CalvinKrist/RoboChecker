@@ -40,10 +40,9 @@ class RandomModelGenerator:
 		model += "module random_robot\n\n"
 		
 		#Add model states and variables
-		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 28; // robot x position\n"
-		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init 110; // robot y position\n"
+		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init " + str(self.map.spawn_x) + "; // robot x position\n"
+		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init " + str(self.map.spawn_y) + "; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 0; // possible robot directions\n"
-		#states += "moving : [0..1] init 0; // if the robot is moving\n"
 		states += "counter : [0.." + str(self.speed) +"] init 0; // if the robot is moving\n"
 		states += "\n"
 		
