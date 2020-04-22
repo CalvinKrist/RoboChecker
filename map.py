@@ -2,9 +2,9 @@ from obstacle import Obstacle
 
 class Map:
 	def __init__(self, width, height):
-		row = [0] * (height + 1)
 		map = []
 		for i in range(width + 1):
+			row = [0] * (height + 1)
 			map.append(row)
 			
 		self.map = map
