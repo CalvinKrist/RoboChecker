@@ -88,6 +88,6 @@ if __name__ == "__main__":
     to_image(get_map_2(), "images/map_2.png")
     to_image(get_map_3(), "images/map_3.png")
 
-    to_heatmap(get_map_1(), dir_to_points("m1_paths", 5), "images/m1.png")
-    to_heatmap(get_map_2(), dir_to_points("m2_paths", 5), "images/m2.png")
-    to_heatmap(get_map_3(), dir_to_points("m3_paths", 5), "images/m3.png")
+    to_heatmap(get_map_1(), dir_to_points("m1_paths", 1), "images/m1.png")
+    to_heatmap(get_map_2(), dir_to_points("m2_paths", 1), "images/m2.png")
+    to_heatmap(get_map_3(), dir_to_points("m3_paths", 1), "images/m3.png")

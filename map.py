@@ -4,8 +4,7 @@ class Map:
 	def __init__(self, width, height):
 		map = []
 		for i in range(width + 1):
-			row = [0] * (height + 1)
-			map.append(row)
+			map.append([0] * (height + 1))
 			
 		self.map = map
 		self.width = width
@@ -39,7 +38,7 @@ def add_rect(map, loc, dim):
 # to enter. There is a dresser along one wall and a hamper along
 # another, and bed posts in a third corner
 def get_map_1():
-	width = 450
+	width = 30
 	map = Map(width, int(width * .9))
 
 	# Add bathroom walls
@@ -77,15 +76,15 @@ def get_map_1():
 	# Add upper right bed post
 	add_rect(map, [offset + w_bed, map.height - w_post - offset - h_bed], [w_post, w_post])
 
-	map.spawn_x = 100
-	map.spawn_y = 100
+	map.spawn_x = 5
+	map.spawn_y = 5
 
 	return map
 
 # A hallway that leads to multiple connected rooms
 # One of the rooms is a kitchen with a large central tabletop
 def get_map_2():
-	width = 450
+	width = 60
 	m = Map(width, int(width * 0.9))
 
 	hallway_height = int(m.height * .111)
@@ -144,14 +143,14 @@ def get_map_2():
 		add_rect(m, [chair[0], chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 		add_rect(m, [chair[0] + w_chair, chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 
-	m.spawn_x = 15
-	m.spawn_y = 20
+	m.spawn_x = 2
+	m.spawn_y = 2
 
 	return m
 
 # A non-rectangular room with angled walls
 def get_map_3():
-	width = 450
+	width = 30
 	m = Map(width, int(width * .8))
 
 	# Add lines around the corners
@@ -194,7 +193,7 @@ def get_map_3():
 	for x in range(int(m.width / 5) + delta, int(4 * m.width / 5) + 1 - delta):
 		m.add_obstacle(x, y)
 
-	m.spawn_x = 225
-	m.spawn_y = 200
+	m.spawn_x = 15
+	m.spawn_y = 15
 
 	return m
