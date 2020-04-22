@@ -1,22 +1,14 @@
-from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
 from coverage_tracker import CoverageTracker
 from map import *
 import copy
 import sys
+from model_generator import ModelGenerator
 	
-class RandomModelGenerator:
+class RandomModelGenerator(ModelGenerator):
 
 	def __init__(self, map, num_angles=4, move_speed=1, tracker=None):
-		angles = get_angles(num_angles)
-		self.speed = move_speed
-		
-		self.approximations = []
-		for angle in angles:
-			self.approximations.append(GridMovementApproximation(angle, move_speed, map))
-			
-		self.map = map
-		self.tracker = tracker
+		super().__init__(map, num_angles, move_speed, tracker)
 
 	def __str__(self):
 		model = "mdp\n\n"
@@ -133,7 +125,7 @@ if __name__ == "__main__":
 		exit(1)
 
 	map_index = sys.argv[1]
-	#map = get_map_1()
+	map = get_map_1()
 	if map_index == "1":
 		map = get_map_1()
 	elif map_index == "2":

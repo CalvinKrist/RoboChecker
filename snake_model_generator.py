@@ -1,11 +1,12 @@
 from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
-from random_model_generator import RandomModelGenerator
+from model_generator import ModelGenerator
 from coverage_tracker import CoverageTracker
-from map import Map
+from map import *
 import copy
+import sys
 
-class SnakeModelGenerator(RandomModelGenerator):
+class SnakeModelGenerator(ModelGenerator):
 
     # No changes thus far
 	def __init__(self, map, num_angles=4, move_speed=1, goal_speed = 1,tracker=None):
@@ -36,8 +37,8 @@ class SnakeModelGenerator(RandomModelGenerator):
 		model += "module snake_robot\n\n"
 		
 		#Add model states and variables
-		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init 1; // robot x position\n"
-		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init 1; // robot y position\n"
+		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init " + str(self.map.spawn_x) + "; // robot x position\n"
+		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init " + str(self.map.spawn_y) + "; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 1; // possible robot directions\n"
 		states += "goal : [0.." + str(len(self.approximations)-1) + "] init 0; // Robot goal direction\n"
 		states += "prevDir : [0.." + str(len(self.approximations)-1) + "] init 0; // Robot's previous direction after turning to goal\n"
@@ -156,13 +157,24 @@ class SnakeModelGenerator(RandomModelGenerator):
 	
 
 if __name__ == "__main__":
-	map = Map(5, 5)
-	#map.add_obstacle(1,3)
-	#print(map.map)
-	#map.add_obstacle(8, 4)
+
+	if len(sys.argv) < 2:
+		print("Please specify a map - 1, 2, or 3")
+		exit(1)
+
+	map_index = sys.argv[1]
+
+	map = get_map_1()
+	if map_index == "1":
+		map = get_map_1()
+	elif map_index == "2":
+		map = get_map_2()
+	elif map_index == "3":
+		map = get_map_3()
+	else:
+		print("Invalid map specified")
+		exit(1)
+
 	track = CoverageTracker(map)
 	model = SnakeModelGenerator(map, num_angles=4, move_speed=8, goal_speed=1,tracker=track)
-	f = open("../../../test.prism","w")
-	f.write(str(model))
-	f.close()
-	#print(model)
+	print(model)
