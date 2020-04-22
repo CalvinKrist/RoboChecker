@@ -1,16 +1,16 @@
 from grid_movement_approx import GridMovementApproximation, get_angles
 from label_generator import LabelGenerator
 from random_model_generator import RandomModelGenerator
+from coverage_tracker import CoverageTracker
 from map import Map
 import copy
 
 class SnakeModelGenerator(RandomModelGenerator):
 
     # No changes thus far
-	def __init__(self, map, num_angles=4, move_speed=1, goal_speed = 1):
-		super().__init__(map, num_angles, move_speed)
+	def __init__(self, map, num_angles=4, move_speed=1, goal_speed = 1,tracker=None):
+		super().__init__(map, num_angles, move_speed, tracker)
 		self.goal_speed = goal_speed
-
 	
 	def __str__(self):
 		model = "mdp\n\n"
@@ -43,8 +43,14 @@ class SnakeModelGenerator(RandomModelGenerator):
 		states += "prevDir : [0.." + str(len(self.approximations)-1) + "] init 0; // Robot's previous direction after turning to goal\n"
 		states += "counter : [0.." + str(self.speed) +"] init 0; // if the robot is moving\n"
 		states += "\n"
-		
+		# Setup main coverageTest variable to add to transitions
+		coverageTest = ""
+		if(self.tracker != None):
+			states += "//Add tracking variables:\n"
+			states += self.tracker.variables
+			coverageTest = "checkLoc=0 & "
 		states += "// Movement transitions when robot can move, same as rand except !dir=goal\n"
+
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
 			# Add boolean state specifier for enterng 'move' mode
@@ -52,7 +58,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 			
 			# Add state specifiers for each stage of movement
 			for j in range(self.speed):
-				states += "[] (dir=" + str(i) + " & !(dir=goal & counter>="+str(self.goal_speed)+") & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=mod(counter+1,"+str(self.speed)+")) & "
+				states += "[] ("+coverageTest+"dir=" + str(i) + " & !(dir=goal & counter>="+str(self.goal_speed)+") & " + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + " & counter=" + str(j) + ") -> 1 : (counter'=mod(counter+1,"+str(self.speed)+")) & "
 			
 				# Add how x state changes
 				delta = approx.path[j]
@@ -67,9 +73,14 @@ class SnakeModelGenerator(RandomModelGenerator):
 					states += "+" + str(delta[1])
 				elif approx.delta[1] < 0:
 					states += "-" + str(abs(delta[1]))
+				# Set tracking variable if tracking
+				if self.tracker != None:
+					states+=") & (checkLoc'=1"
 				states += ");\n"
 			states += "\n"
-		
+		if self.tracker != None:
+			states += "\n// Update coverage if checking for location\n"
+			states += self.tracker.transitions
 		states += "\n// Movement transitions when dir != goal and can't/end of move\n"
 		
 		# Fully random transition not needed right now
@@ -88,7 +99,7 @@ class SnakeModelGenerator(RandomModelGenerator):
 			
 			# When robot hits obstacle - turn towards goal
 			for j in range(self.speed):
-				states += "[] (dir=" + str(i) + " & "+direction_check+" & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
+				states += "[] ("+coverageTest+"dir=" + str(i) + " & "+direction_check+" & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 				states += transition_to_goal + ";\n"
 			# If movement is done, set counter to 0 and continue
 			# DONT NEED ANYMORE B/C added mod to counter increment
@@ -113,11 +124,11 @@ class SnakeModelGenerator(RandomModelGenerator):
 				# Max speed in direction of goal is 1
 				# If run into something when moving in direction of goal, change goals
 				for j in range(self.goal_speed):
-					states += "[] (goal="+str(g)+" & prevDir=" + str(i) + " & "+direction_check+" &  counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
+					states += "[] ("+coverageTest+"goal="+str(g)+" & prevDir=" + str(i) + " & "+direction_check+" &  counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 					states += transition_next_dir+"& (goal' = "+str(next_direction)+") & (prevDir' = "+str(g)+");\n"
 				# If movement towards goal is done, turn to opposite 
 				# direction of previous path
-				states+="[] (goal="+str(g)+" & prevDir=" + str(i) + " & "+direction_check+ " & counter=" + str(self.goal_speed) + ") ->"
+				states+="[] ("+coverageTest+"goal="+str(g)+" & prevDir=" + str(i) + " & "+direction_check+ " & counter=" + str(self.goal_speed) + ") ->"
 				states += transition_next_dir + ";\n"
 
 
@@ -136,13 +147,22 @@ class SnakeModelGenerator(RandomModelGenerator):
 			model += "\t" + obstacle.x + " : int init " + str(obstacle.xVal) + ";\n"
 			model += "\t" + obstacle.y + " : int init " + str(obstacle.yVal) + ";\n"
 			model += "endmodule"
-		
+
+		# Reward for tracking where the robot has gone
+		if self.tracker != None:
+			model+= "\n"+self.tracker.rewards
+
 		return model
 	
 
 if __name__ == "__main__":
-	map = Map(10, 10)
-	#map.add_obstacle(2,9)
+	map = Map(5, 5)
+	#map.add_obstacle(1,3)
+	#print(map.map)
 	#map.add_obstacle(8, 4)
-	model = SnakeModelGenerator(map, num_angles=4, move_speed=8, goal_speed=1)
-	print(model)
+	track = CoverageTracker(map)
+	model = SnakeModelGenerator(map, num_angles=4, move_speed=8, goal_speed=1,tracker=track)
+	f = open("../../../test.prism","w")
+	f.write(str(model))
+	f.close()
+	#print(model)
