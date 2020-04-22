@@ -8,7 +8,8 @@ This file has the main method. It also has the class `RandomModelGenerator`, whi
 * Map height
 * Number of possible angles
 * Movement speed
-	
+* Coverage Tracker
+
 ### grid_movement_approx
 
 This file contains the `GridMovementApproximation` class. This is used to help approximate movement at arbitrary angles along a Cartesian grid. It can be used to determine the rounded movement at a certain angle, the path to get there, and to generate functions on if that movement is possible. This file also has a main method that can be used to help debug this class.
@@ -34,3 +35,11 @@ This file contains the `SnakeModelGenerator` class which inherits from `GridMove
 This script is used to generate paths using the PRISM command line with extended RAM. Within the script, make sure to set `PRISM_DIR` to the correct value. Additionally, for large models you may need to further expand the RAM PRISM is run with.
 
 Usage: `path_generator.bat [map_number] [step_count] [output_file]`
+
+### coverage_tracker
+
+This is the helper that creates coverage tracking functionality for a given `map`.
+
+Usage example: 
+`tracker = CoverageTracker(map)`
+`model = RandomModelGenerator(map, num_angles=25, move_speed=10, tracker=tracker)`
