@@ -12,6 +12,7 @@ class CoverageTracker:
 		self.variables = ""
 		self.rewards = ""
 		self.transitions = ""
+		self.formulas = ""
 		self.initValues()
 		pass
 	# Returns the tracking variables needed for the given map 
@@ -20,22 +21,26 @@ class CoverageTracker:
 		w = self.map.width
 		h = self.map.height
 		variables = "checkLoc : [0..1] init 1;\n"
-		reward = "rewards \"coverage\"\n"
+		reward = ""
 		transitions = ""
+		formula = "formula totalCoverage = "
 		# Need to 1 index
 		# XxY
+		# reward += "rewards \"coverage\"\n"
 		for i in range(1,w+1):
 			for j in range(1,h+1):
 				if(not self.trackObs and (self.map.map[i][j]==1)):
 					continue
 				var_name = "r"+str(i)+"x"+str(j)
-				variables += var_name+" : bool init false;\n"
+				variables += var_name+" : int init 0;\n"
 				if(not (i == 1 and j == 1)):
-					reward+=" | "
+					formula+=" + "
 				checkGridxy = str(self.xVar)+"="+str(i)+" & "+str(self.yVar)+"="+str(j)
-				reward += "(!"+var_name+" & "+checkGridxy+")"
-				transitions+= "[coverage] (checkLoc=1 & "+checkGridxy+") -> 1 : (checkLoc'=0) & ("+var_name+"'=true);\n"
-		reward+=": 1;\nendrewards\n\n"
+				#reward += "(!"+var_name+" & "+checkGridxy+")"
+				formula += var_name
+				transitions+= "[coverage] (checkLoc=1 & "+checkGridxy+") -> 1 : (checkLoc'=0) & ("+var_name+"'=1);\n"
+		#reward+=": 1;\nendrewards\n\n"
+		formula += ";\n"
 		# Count number of coverage queries
 		reward += "rewards \"coverageQuery\"\n"
 		reward += "[coverage] true: 1;\n"
@@ -44,6 +49,7 @@ class CoverageTracker:
 		self.variables = variables
 		self.rewards = reward
 		self.transitions = transitions
+		self.formulas = formula
 
 from random_model_generator import RandomModelGenerator
 
