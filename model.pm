@@ -2087,7 +2087,7 @@ module spiral_robot
 	[] (checkLoc=0 &  mode & !(moveB5238 & collideB5238)) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) & (counter'=0) + 1 / 4 : (dir'=2) & (counter'=0) + 1 / 4 : (dir'=3) & (counter'=0)& (mode'=false) & (diameter'=max(5, diameter));
 	[] (checkLoc=0 &  mode & !(moveB5239 & collideB5239)) -> 1 / 4 : (dir'=0) + 1 / 4 : (dir'=1) & (counter'=0) + 1 / 4 : (dir'=2) & (counter'=0) + 1 / 4 : (dir'=3) & (counter'=0)& (mode'=false) & (diameter'=max(5, diameter));
 	
-	[] (checkLoc=0 & diameter=0 & !mode) -> 1 : (mode'=true) & (spiral'=3); 
+	[] (checkLoc=0 & diameter=0 & !mode) -> 1 : (mode'=true) & (spiral'=0); 
 	 
 	
 endmodule
