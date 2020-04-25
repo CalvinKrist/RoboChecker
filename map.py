@@ -62,7 +62,11 @@ def get_map_1():
 	add_rect(map, [map.width / 2 - width / 2, map.height - height], [width, height])
 
 	# Add bed posts
-	w_bed = int(map.width * .18)
+	map.add_obstacle(2, map.height - 1)
+	map.add_obstacle(7, map.height - 1)
+	map.add_obstacle(2, map.height - 11)
+	map.add_obstacle(7, map.height - 11)
+	'''w_bed = int(map.width * .18)
 	h_bed = int(map.height * .377)
 	w_post = int(map.width * .01)
 	offset = int(map.width * .01)
@@ -74,7 +78,7 @@ def get_map_1():
 	# Add upper left bed post
 	add_rect(map, [offset, map.height - w_post - offset - h_bed], [w_post, w_post])
 	# Add upper right bed post
-	add_rect(map, [offset + w_bed, map.height - w_post - offset - h_bed], [w_post, w_post])
+	add_rect(map, [offset + w_bed, map.height - w_post - offset - h_bed], [w_post, w_post])'''
 
 	map.spawn_x = 5
 	map.spawn_y = 5
