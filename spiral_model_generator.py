@@ -123,11 +123,8 @@ class SpiralModelGenerator(ModelGenerator):
 			step+=1
 		
 		spiral_approx = GridMovementApproximation( 0xdeadbeef, 10, self.map, delta_list=spiral_path)
-		
-		
-		
 		for i in range(len(list(spiral_approx.move_formulas.keys()))):
-			states +="[] (mode & spiral=" + str(i) + "&" +coverageTest + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]) + ")"
+			states +="[] (mode & spiral=" + str(i) + "&" +coverageTest + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]*2) + ")"
 			if self.tracker != None:
 				states+=" & (checkLoc'=1)"
 			states+=";\n"
@@ -148,23 +145,22 @@ class SpiralModelGenerator(ModelGenerator):
 			# Add boolean state specifier
 			for j in range(self.speed):
 			#need to account for whether we are at diameter or not
-				states += "[] ("+coverageTest+"dir=" + str(i) + " & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
-				states += transition + "& (mode'=false);\n"
+				states += "[] ("+coverageTest+"diameter>0 & dir=" + str(i) + " & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
+				states += transition + "& (mode'=false) & (diameter'=max(5, diameter));\n"
 			# If movement is done, set counter to 0 and continue
 			# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
 			states += "\n"
 			
-		
-		
 		# Add boolean state specifier
 		for j in range(len(spiral_path)):
 		#need to account for whether we are at diameter or not
-			states += "[] ("+coverageTest+"  !(" + list(spiral_approx.move_formulas.keys())[j] + " & " + list(spiral_approx.obstacle_formulas.keys())[j] + ")) -> "
-			states += transition + "& (mode'=false);\n"
+			states += "[] ("+coverageTest+" mode & !(" + list(spiral_approx.move_formulas.keys())[j] + " & " + list(spiral_approx.obstacle_formulas.keys())[j] + ")) -> "
+			states += transition + "& (mode'=false) & (diameter'=max(5, diameter));\n"
 		# If movement is done, set counter to 0 and continue
 		# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
 		states += "\n"
-
+		
+		states+= "[] ("+ coverageTest+"diameter=0 & !mode) -> 1 : (mode'=true) & (spiral'=0); \n \n"
 
 
 		for line in states.split("\n"):
@@ -221,7 +217,7 @@ if __name__ == "__main__":
 	# coverage
 	track = CoverageTracker(map)
 
-	model = SpiralModelGenerator(map, num_angles=25, move_speed=10, tracker=track)
+	model = SpiralModelGenerator(map, num_angles=4, move_speed=1, tracker=track)
 	print(model)
 	
 
