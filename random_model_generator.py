@@ -31,6 +31,10 @@ class RandomModelGenerator(ModelGenerator):
 			model += "\n"
 		model += "\n"
 		
+		if(self.tracker != None):
+			model += "//Formula for coverage\n"
+			model += self.tracker.formulas+"\n\n"
+
 		model += "module random_robot\n\n"
 		
 		#Add model states and variables
