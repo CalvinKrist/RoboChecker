@@ -46,10 +46,10 @@ class SpiralModelGenerator(ModelGenerator):
 		model += "module spiral_robot\n\n"
 
 		#Add model states and variables
-        #UNIQUE TO SPIRAL:
-        #spiral- step in the spiral
-        #diameter- twice the diameter of the spiral
-        #mode - true in spiral, false in random
+		#UNIQUE TO SPIRAL:
+		#spiral- step in the spiral
+		#diameter- twice the diameter of the spiral
+		#mode - true in spiral, false in random
 		states =  LabelGenerator.x + " : [1.." + str(self.map.width) + "] init " + str(self.map.spawn_x) +	"; // robot x position\n"
 		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init " + str(self.map.spawn_y) + "; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 1; // possible robot directions\n"
@@ -60,8 +60,8 @@ class SpiralModelGenerator(ModelGenerator):
 		
 		states += "\n"
 		
-        #switching from random to spiral mode
-        #MAY NEED MORE RESTRICTIONS
+		#switching from random to spiral mode
+		#MAY NEED MORE RESTRICTIONS
 		states+= "//switching to spiral mode"
 		states+= "[] (diameter=0 & !mode) -> 1 : (mode'= true); \n \n"
 		
@@ -72,7 +72,7 @@ class SpiralModelGenerator(ModelGenerator):
 			states += self.tracker.variables
 			coverageTest = "checkLoc=0 & "
 
-        #RANDOM MODE MOTION - IDENTICAL TO RANDOM
+		#RANDOM MODE MOTION - IDENTICAL TO RANDOM
 		states += "// Movement transitions when robot can move in random mode\n"
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
@@ -107,12 +107,12 @@ class SpiralModelGenerator(ModelGenerator):
 
 
 
-        #SPIRAL MODE MOTION
+		#SPIRAL MODE MOTION
 		states+= "//Movement transitions when robot can move and is in spiral mode\n"
 		#see archimedean spiral for more detail
-        total_travelled=0.0
+		total_travelled=0.0
 		step=0
-        #spiral path keeps track of the deltax and deltay from one step of spiral to the next
+		#spiral path keeps track of the deltax and deltay from one step of spiral to the next
 		spiral_path =[]
 		diameter_list=[]
 		last_point = Point(0,0)
@@ -121,24 +121,24 @@ class SpiralModelGenerator(ModelGenerator):
 			angle = calc.computeAngle(total_travelled)
 			point=calc.computePoint(angle)
 			total_travelled+=1
-            
-            #don't need to calculate spiral beyond possible width of map
+			
+			#don't need to calculate spiral beyond possible width of map
 			if(point.x>self.map.width/2 or point.y > self.map.height/2):
 				break;
-            #getting x and y chanes    
+			#getting x and y chanes    
 			x_change = math.floor(point.x -last_point.x)
 			y_change = math.floor(point.y -last_point.y)
 			spiral_path.append((x_change,y_change));
 			diameter_list.append(2 * math.ceil( point.distance(Point(0,0))))
-            
-            #set point to last point so calculations work
+			
+			#set point to last point so calculations work
 			last_point = Point(last_point.x + x_change, last_point.y + y_change)
 			step+=1
 		
-        #fake values- used to generate spiral collisions
+		#fake values- used to generate spiral collisions
 		spiral_approx = GridMovementApproximation( 0xdeadbeef, 10, self.map, delta_list=spiral_path)
-        
-        #allowable spiral transitions
+		
+		#allowable spiral transitions
 		for i in range(len(list(spiral_approx.move_formulas.keys()))):
 			states +="[] (mode & spiral=" + str(i) + "&" +coverageTest + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]*2) + ")"
 			if self.tracker != None:
@@ -198,7 +198,7 @@ class SpiralModelGenerator(ModelGenerator):
 		if self.tracker != None:
 			model+= "\n"+self.tracker.rewards
 			
-        #Formulas for checking if movement hits an obstacle for the spiral transitions    
+		#Formulas for checking if movement hits an obstacle for the spiral transitions    
 		model += "//Formulas for checking if B movement along an angle is in bounds\n"
 		for formula_name, formula in spiral_approx.move_formulas.items():
 			model += formula + "\n";
@@ -231,7 +231,7 @@ if __name__ == "__main__":
 	# coverage
 	track = CoverageTracker(map)
 
-	model = SpiralModelGenerator(map, num_angles=4, move_speed=1, tracker=track)
+	model = SpiralModelGenerator(map, num_angles=25, move_speed=10, tracker=track)
 	print(model)
 	
 
