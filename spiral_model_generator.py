@@ -66,7 +66,7 @@ class SpiralModelGenerator(ModelGenerator):
 			states += self.tracker.variables
 			coverageTest = "checkLoc=0 & "
 
-#&checkLoc=0 & dir=15 & moveA150 & collideA150
+
 		states += "// Movement transitions when robot can move in random mode\n"
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
@@ -127,7 +127,10 @@ class SpiralModelGenerator(ModelGenerator):
 		
 		
 		for i in range(len(list(spiral_approx.move_formulas.keys()))):
-			states +="[] (mode & spiral=" + str(i) + " &" + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]) + ");\n"
+			states +="[] (mode & spiral=" + str(i) + "&" +coverageTest + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]) + ")"
+			if self.tracker != None:
+				states+=" & (checkLoc'=1)"
+			states+=";\n"
 		
 		
 		
@@ -150,6 +153,17 @@ class SpiralModelGenerator(ModelGenerator):
 			# If movement is done, set counter to 0 and continue
 			# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
 			states += "\n"
+			
+		
+		
+		# Add boolean state specifier
+		for j in range(len(spiral_path)):
+		#need to account for whether we are at diameter or not
+			states += "[] ("+coverageTest+"  !(" + list(spiral_approx.move_formulas.keys())[j] + " & " + list(spiral_approx.obstacle_formulas.keys())[j] + ")) -> "
+			states += transition + "& (mode'=false);\n"
+		# If movement is done, set counter to 0 and continue
+		# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
+		states += "\n"
 
 
 
