@@ -1,4 +1,10 @@
 __pycache__
-m1_paths/*
-m2_paths/*
-m3_paths/*
+snake/m1paths/*
+snake/m2paths/*
+snake/m3paths/*
+random/m1paths/*
+random/m2paths/*
+random/m3paths/*
+spiral/m1paths/*
+spiral/m2paths/*
+spiral/m3paths/*

@@ -80,8 +80,8 @@ def get_map_1():
 	# Add upper right bed post
 	add_rect(map, [offset + w_bed, map.height - w_post - offset - h_bed], [w_post, w_post])'''
 
-	map.spawn_x = 5
-	map.spawn_y = 5
+	map.spawn_x = 24
+	map.spawn_y = 19
 
 	return map
 
@@ -147,8 +147,8 @@ def get_map_2():
 		add_rect(m, [chair[0], chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 		add_rect(m, [chair[0] + w_chair, chair[1] + w_chair], [w_chair_leg, w_chair_leg])
 
-	m.spawn_x = 2
-	m.spawn_y = 2
+	m.spawn_x = 25
+	m.spawn_y = 17
 
 	return m
 

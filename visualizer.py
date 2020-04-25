@@ -74,20 +74,49 @@ def to_heatmap(m, points, name):
     # Add heatmap data
     for point, count in histogram.items():
         prop = count / max
-        data[point[0] - 1 + m.width * (point[1] - 1)] = (int(150 * prop + 105), int(100 - 100 * prop), int(150 - 150 * prop))
+        data[point[0] - 1 + m.width * (point[1] - 1)] = (int(225 * prop + 30), int(20 - 20 * prop), int(120 - 120 * prop))
 
     # Add obstacle data
     for obstacle in m.obstacles:
         data[obstacle.xVal - 1 + (obstacle.yVal - 1) * m.width] = (0, 0, 0)
 
+    # Mark spawn point
+    data[points[0][0] - 1 + (points[0][1] - 1) * m.width] = (0, 255, 0)
+
     img.putdata(data)
     img.save(name)
 
 if __name__ == "__main__":
-    to_image(get_map_1(), "images/map_1.png")
-    to_image(get_map_2(), "images/map_2.png")
-    to_image(get_map_3(), "images/map_3.png")
+    to_image(get_map_1(), "maps/map_1.png")
+    to_image(get_map_2(), "maps/map_2.png")
+    to_image(get_map_3(), "maps/map_3.png")
 
-    to_heatmap(get_map_1(), dir_to_points("m1_paths", 1), "images/m1.png")
-    to_heatmap(get_map_2(), dir_to_points("m2_paths", 1), "images/m2.png")
-    to_heatmap(get_map_3(), dir_to_points("m3_paths", 1), "images/m3.png")
+    # Draw map 1 heatmaps
+    '''to_heatmap(get_map_1(), path_to_points("spiral/m1paths/spawn1.txt", 1), "spiral/m1s1.png")
+    to_heatmap(get_map_1(), path_to_points("random/m1paths/spawn1.txt", 1), "random/m1s1.png")
+    to_heatmap(get_map_1(), path_to_points("snake/m1paths/spawn1.txt", 1), "snake/m1s1.png")
+    to_heatmap(get_map_1(), path_to_points("spiral/m1paths/spawn2.txt", 1), "spiral/m1s2.png")
+    to_heatmap(get_map_1(), path_to_points("random/m1paths/spawn2.txt", 1), "random/m1s2.png")
+    to_heatmap(get_map_1(), path_to_points("snake/m1paths/spawn2.txt", 1), "snake/m1s2.png")'''
+
+    # Draw map 2 heatmaps
+    '''to_heatmap(get_map_2(), path_to_points("spiral/m2paths/spawn1.txt", 1), "spiral/m2s1.png")
+    to_heatmap(get_map_2(), path_to_points("random/m2paths/spawn1.txt", 1), "random/m2s1.png")
+    to_heatmap(get_map_2(), path_to_points("snake/m2paths/spawn1.txt", 1), "snake/m2s1.png")
+    to_heatmap(get_map_2(), path_to_points("spiral/m2paths/spawn2.txt", 1), "spiral/m2s2.png")
+    to_heatmap(get_map_2(), path_to_points("random/m2paths/spawn2.txt", 1), "random/m2s2.png")
+    to_heatmap(get_map_2(), path_to_points("snake/m2paths/spawn2.txt", 1), "snake/m2s2.png")
+    to_heatmap(get_map_2(), path_to_points("spiral/m2paths/spawn3.txt", 1), "spiral/m2s3.png")
+    to_heatmap(get_map_2(), path_to_points("random/m2paths/spawn3.txt", 1), "random/m2s3.png")
+    to_heatmap(get_map_2(), path_to_points("snake/m2paths/spawn3.txt", 1), "snake/m2s3.png")'''
+    to_heatmap(get_map_2(), path_to_points("spiral/m2paths/spawn4.txt", 1), "spiral/m2s4.png")
+    to_heatmap(get_map_2(), path_to_points("random/m2paths/spawn4.txt", 1), "random/m2s4.png")
+    to_heatmap(get_map_2(), path_to_points("snake/m2paths/spawn4.txt", 1), "snake/m2s4.png")
+
+    # Draw map 3 heatmaps
+    to_heatmap(get_map_3(), path_to_points("spiral/m3paths/spawn1.txt", 1), "spiral/m3s1.png")
+    to_heatmap(get_map_3(), path_to_points("random/m3paths/spawn1.txt", 1), "random/m3s1.png")
+    to_heatmap(get_map_3(), path_to_points("snake/m3paths/spawn1.txt", 1), "snake/m3s1.png")
+    to_heatmap(get_map_3(), path_to_points("spiral/m3paths/spawn2.txt", 1), "spiral/m3s2.png")
+    to_heatmap(get_map_3(), path_to_points("random/m3paths/spawn2.txt", 1), "random/m3s2.png")
+    to_heatmap(get_map_3(), path_to_points("snake/m3paths/spawn2.txt", 1), "snake/m3s2.png")
