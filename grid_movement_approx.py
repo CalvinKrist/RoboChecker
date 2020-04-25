@@ -39,29 +39,57 @@ def calculte_delta(angle, move_speed):
 	
 class GridMovementApproximation:
 	counter = 0
-	def __init__(self, angle, move_speed, map):
-		self.name = "A" + str(GridMovementApproximation.counter)
+	def __init__(self, angle, move_speed, map, delta_list=None):
+		
 		GridMovementApproximation.counter += 1
-		
-		self.angle = angle
-		self.speed = move_speed
-		self.delta = calculte_delta(angle, move_speed)
-		
+		if(delta_list):
+			self.custom_initializer(delta_list, map)
+			return
+		  
+		else:
+			self.name = "A" + str(GridMovementApproximation.counter)
+			self.angle = angle
+			self.speed = move_speed
+			self.delta = calculte_delta(angle, move_speed)
+			
+			# Calculate the path for the movement
+			delta_list = []
+			for i in range(1, move_speed + 1):
+				delta = calculte_delta(angle, i)
+				delta_list.append(delta)
+				
+			self.path = []
+			x = 0
+			y = 0
+			for i in range(len(delta_list)):
+				delta = delta_list[i]
+				self.path.append((delta[0] - x, delta[1] - y))
+				x = delta[0]
+				y = delta[1]
+				
+			self.labelGenerator = LabelGenerator()
+			
+			self.move_formulas = {}
+			i = 0
+			for delta in self.path:
+				moveFormula = "move" + self.name + str(i)
+				moveForumaText = "formula " + moveFormula + " = " + self.labelGenerator.isDeltaValid(delta[0], delta[1]) + ";"
+				self.move_formulas[moveFormula] = moveForumaText;
+				i+=1
+			
+			self.obstacle_formulas = {}
+			i = 0
+			for delta in self.path:
+				path_copy = list(self.path.copy())
+				obstacleFormula = "collide" + self.name + str(i)
+				obstacleFormulaTest = "formula " + obstacleFormula + " = " + self.labelGenerator.getObstacleAvoidanceEq(map, [path_copy[i]]) + ";"
+				self.obstacle_formulas[obstacleFormula] = obstacleFormulaTest;
+				i += 1
+			
+	def custom_initializer(self, delta_list, map):
+		self.name = "B" + str(GridMovementApproximation.counter)
 		# Calculate the path for the movement
-		delta_list = []
-		for i in range(1, move_speed + 1):
-			delta = calculte_delta(angle, i)
-			delta_list.append(delta)
-			
-		self.path = []
-		x = 0
-		y = 0
-		for i in range(len(delta_list)):
-			delta = delta_list[i]
-			self.path.append((delta[0] - x, delta[1] - y))
-			x = delta[0]
-			y = delta[1]
-			
+		self.path= delta_list
 		self.labelGenerator = LabelGenerator()
 		
 		self.move_formulas = {}
