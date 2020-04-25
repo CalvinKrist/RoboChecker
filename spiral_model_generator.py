@@ -49,7 +49,7 @@ class SpiralModelGenerator(ModelGenerator):
 		states += LabelGenerator.y + " : [1.." + str(self.map.height) + "] init " + str(self.map.spawn_y) + "; // robot y position\n"
 		states += "dir : [0.." + str(len(self.approximations)-1) + "] init 1; // possible robot directions\n"
 		states += "spiral : [0.." + str(math.floor(self.map.width * self.map.height/2)) + "] init 0; //step of spiral\n"
-		states += "mode: bool; //robot is spiralling: T is yes, F is random\n"
+		states += "mode: bool init true; //robot is spiralling: T is yes, F is random\n"
 		states += "diameter : [0.." + str(self.map.width) +"] init 0; // diamter of current spiral or left to go before spiralling\n"
 		states += "counter : [0.." + str(self.speed) +"] init 0; // if the robot is moving\n"
 		
@@ -115,7 +115,7 @@ class SpiralModelGenerator(ModelGenerator):
 			x_change = math.floor(point.x -last_point.x)
 			y_change = math.floor(point.y -last_point.y)
 			diameter = 2 * math.ceil( point.distance(Point(0,0)))
-			states +="[] (mode & spiral=" + str(step) + ") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(x_change) + ") & (y2' =" + str(y_change) + ") & (diameter'=" + str(diameter) + ");\n"
+			states +="[] (mode & spiral=" + str(step) + ") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(x_change) + ") & (y2' = y2 +" + str(y_change) + ") & (diameter'=" + str(diameter) + ");\n"
 			last_point = Point(last_point.x + x_change, last_point.y + y_change)
 			step+=1
 
