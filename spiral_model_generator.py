@@ -1,6 +1,7 @@
 #spiral approximation
 from label_generator import LabelGenerator
 from coverage_tracker import CoverageTracker
+from grid_movement_approx import GridMovementApproximation
 from map import *
 import copy
 import sys
@@ -17,7 +18,7 @@ class SpiralModelGenerator(ModelGenerator):
  
  # No changes thus far
 	def __init__(self, map, num_angles=4, move_speed=1, tracker=None):
-		super().__init__(map, num_angles, move_speed,tracker)
+		super().__init__(map, num_angles, move_speed, tracker)
 		
 
 
@@ -34,7 +35,7 @@ class SpiralModelGenerator(ModelGenerator):
 				model += formula + "\n";
 			model += "\n"
 		model += "\n"
-
+		
 		model += "//Formula for checking if movement along an angle collides with obstacles\n"
 		for approx in self.approximations:
 			for formula_name, formula in approx.obstacle_formulas.items():
@@ -65,7 +66,7 @@ class SpiralModelGenerator(ModelGenerator):
 			states += self.tracker.variables
 			coverageTest = "checkLoc=0 & "
 
-
+#&checkLoc=0 & dir=15 & moveA150 & collideA150
 		states += "// Movement transitions when robot can move in random mode\n"
 		for i in range(len(self.approximations)):
 			approx = self.approximations[i];
@@ -104,6 +105,8 @@ class SpiralModelGenerator(ModelGenerator):
 		states+= "//Movement transitions when robot can move and is in spiral mode\n"
 		total_travelled=0.0
 		step=0
+		spiral_path =[]
+		diameter_list=[]
 		last_point = Point(0,0)
 		calc=ArchimedeanSpiral()
 		while(True):
@@ -114,11 +117,22 @@ class SpiralModelGenerator(ModelGenerator):
 				break;
 			x_change = math.floor(point.x -last_point.x)
 			y_change = math.floor(point.y -last_point.y)
-			diameter = 2 * math.ceil( point.distance(Point(0,0)))
-			states +="[] (mode & spiral=" + str(step) + ") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(x_change) + ") & (y2' = y2 +" + str(y_change) + ") & (diameter'=" + str(diameter) + ");\n"
+			spiral_path.append((x_change,y_change));
+			diameter_list.append(2 * math.ceil( point.distance(Point(0,0))))
 			last_point = Point(last_point.x + x_change, last_point.y + y_change)
 			step+=1
-
+		
+		spiral_approx = GridMovementApproximation( 0xdeadbeef, 10, self.map, delta_list=spiral_path)
+		
+		
+		
+		for i in range(len(list(spiral_approx.move_formulas.keys()))):
+			states +="[] (mode & spiral=" + str(i) + " &" + list(spiral_approx.move_formulas.keys())[i] + " & " + list(spiral_approx.obstacle_formulas.keys())[i] +") -> 1: (spiral'=spiral+1) & (x2' = x2 +" + str(spiral_path[i][0]) + ") & (y2' = y2 +" + str(spiral_path[i][1]) + ") & (diameter'=" + str(diameter_list[i]) + ");\n"
+		
+		
+		
+ 
+		
 		states += "\n// Movement transitions when robot can't move\n"
 		prob = "1 / " + str(len(self.approximations))
 		transition = prob + " : (dir'=0)"
@@ -157,6 +171,20 @@ class SpiralModelGenerator(ModelGenerator):
 		# Reward for tracking where the robot has gone
 		if self.tracker != None:
 			model+= "\n"+self.tracker.rewards
+			
+		model += "//Formulas for checking if B movement along an angle is in bounds\n"
+		
+		for formula_name, formula in spiral_approx.move_formulas.items():
+			model += formula + "\n";
+		model += "\n"
+
+		
+		model += "//Formula for checking if B movement along an angle collides with obstacles\n"
+
+		for formula_name, formula in spiral_approx.obstacle_formulas.items():
+			model += formula + "\n";
+		model += "\n"
+
 
 		return model
 		
@@ -174,7 +202,7 @@ if __name__ == "__main__":
 	elif map_index == "3":
 		map = get_map_3()
 	else:
-		map = Map(30, 30)
+		map = Map(10, 10)
 		
 	# coverage
 	track = CoverageTracker(map)
