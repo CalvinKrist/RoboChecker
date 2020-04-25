@@ -161,7 +161,7 @@ class SpiralModelGenerator(ModelGenerator):
 			# Add boolean state specifier
 			for j in range(self.speed):
 			#need to account for whether we are at diameter or not
-				states += "[] ("+coverageTest+"diameter>0 & dir=" + str(i) + " & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
+				states += "[] ("+coverageTest+"!mode & diameter>0 & dir=" + str(i) + " & counter=" + str(j) + " & !(" + list(approx.move_formulas.keys())[j] + " & " + list(approx.obstacle_formulas.keys())[j] + ")) -> "
 				states += transition + "& (mode'=false) & (diameter'=max(5, diameter));\n"
 			# If movement is done, set counter to 0 and continue
 			# states += "[] (dir=" + str(i) + " & counter=" + str(self.speed) + ") -> (counter'=0);"
