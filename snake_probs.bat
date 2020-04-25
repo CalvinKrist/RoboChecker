@@ -15,7 +15,7 @@ path=%PRISM_DIR%\lib;%path%
 set CP=%PRISM_DIR%\lib\prism.jar;%PRISM_DIR%\classes;%PRISM_DIR%;%PRISM_DIR%\lib\pepa.zip;%PRISM_DIR%\lib\*
 
 
-python random_model_generator.py 1 > model.pm
+python snake_model_generator.py 1 > model.pm
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 1 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 2 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 3 -sim -simmethod ci -simsamples 300
@@ -41,7 +41,7 @@ java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 23 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 24 -sim -simmethod ci -simsamples 300
 
-python random_model_generator.py 2 > model.pm
+python snake_model_generator.py 2 > model.pm
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 25 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 26 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 27 -sim -simmethod ci -simsamples 300
@@ -67,7 +67,7 @@ java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 47 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 48 -sim -simmethod ci -simsamples 300
 
-python random_model_generator.py 3 > model.pm
+python snake_model_generator.py 3 > model.pm
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 49 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 50 -sim -simmethod ci -simsamples 300
 java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model.pm properties.csl -prop 51 -sim -simmethod ci -simsamples 300
