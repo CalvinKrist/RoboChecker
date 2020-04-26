@@ -3926,7 +3926,7 @@ PRISM
 =====
 
 Version: 4.5
-Date: Sat Apr 25 23:09:24 EDT 2020
+Date: Sun Apr 26 15:32:45 EDT 2020
 Hostname: DESKTOP-JP4HOQA
 Memory limits: cudd=1g, java(heap)=3.6g
 Command line: prism model.pm properties.csl -prop 70 -sim -simmethod ci -simsamples 300
@@ -3935,12 +3935,114 @@ Parsing model file "model.pm"...
 
 Parsing properties file "properties.csl"...
 
-Error: Undeclared identifier ("totalCoverage", line 1, column 16).
+72 properties:
+(1) Pmin=? [ F<900 totalCoverage=193 ]
+(2) Pmax=? [ F<900 totalCoverage=193 ]
+(3) Pmin=? [ F<1800 totalCoverage=193 ]
+(4) Pmax=? [ F<1800 totalCoverage=193 ]
+(5) Pmin=? [ F<2700 totalCoverage=193 ]
+(6) Pmax=? [ F<2700 totalCoverage=193 ]
+(7) Pmin=? [ F<900 totalCoverage=385 ]
+(8) Pmax=? [ F<900 totalCoverage=385 ]
+(9) Pmin=? [ F<1800 totalCoverage=385 ]
+(10) Pmax=? [ F<1800 totalCoverage=385 ]
+(11) Pmin=? [ F<2700 totalCoverage=385 ]
+(12) Pmax=? [ F<2700 totalCoverage=385 ]
+(13) Pmin=? [ F<900 totalCoverage=578 ]
+(14) Pmax=? [ F<900 totalCoverage=578 ]
+(15) Pmin=? [ F<1800 totalCoverage=578 ]
+(16) Pmax=? [ F<1800 totalCoverage=578 ]
+(17) Pmin=? [ F<2700 totalCoverage=578 ]
+(18) Pmax=? [ F<2700 totalCoverage=578 ]
+(19) Pmin=? [ F<900 totalCoverage=694 ]
+(20) Pmax=? [ F<900 totalCoverage=694 ]
+(21) Pmin=? [ F<1800 totalCoverage=694 ]
+(22) Pmax=? [ F<1800 totalCoverage=694 ]
+(23) Pmin=? [ F<2700 totalCoverage=694 ]
+(24) Pmax=? [ F<2700 totalCoverage=694 ]
+(25) Pmin=? [ F<900 totalCoverage=550 ]
+(26) Pmax=? [ F<900 totalCoverage=550 ]
+(27) Pmin=? [ F<1800 totalCoverage=550 ]
+(28) Pmax=? [ F<1800 totalCoverage=550 ]
+(29) Pmin=? [ F<2700 totalCoverage=550 ]
+(30) Pmax=? [ F<2700 totalCoverage=550 ]
+(31) Pmin=? [ F<900 totalCoverage=1100 ]
+(32) Pmax=? [ F<900 totalCoverage=1100 ]
+(33) Pmin=? [ F<1800 totalCoverage=1100 ]
+(34) Pmax=? [ F<1800 totalCoverage=1100 ]
+(35) Pmin=? [ F<2700 totalCoverage=1100 ]
+(36) Pmax=? [ F<2700 totalCoverage=1100 ]
+(37) Pmin=? [ F<900 totalCoverage=1650 ]
+(38) Pmax=? [ F<900 totalCoverage=1650 ]
+(39) Pmin=? [ F<1800 totalCoverage=1650 ]
+(40) Pmax=? [ F<1800 totalCoverage=1650 ]
+(41) Pmin=? [ F<2700 totalCoverage=1650 ]
+(42) Pmax=? [ F<2700 totalCoverage=1650 ]
+(43) Pmin=? [ F<900 totalCoverage=1980 ]
+(44) Pmax=? [ F<900 totalCoverage=1980 ]
+(45) Pmin=? [ F<1800 totalCoverage=1980 ]
+(46) Pmax=? [ F<1800 totalCoverage=1980 ]
+(47) Pmin=? [ F<2700 totalCoverage=1980 ]
+(48) Pmax=? [ F<2700 totalCoverage=1980 ]
+(49) Pmin=? [ F<900 totalCoverage=138 ]
+(50) Pmax=? [ F<900 totalCoverage=138 ]
+(51) Pmin=? [ F<1800 totalCoverage=138 ]
+(52) Pmax=? [ F<1800 totalCoverage=138 ]
+(53) Pmin=? [ F<2700 totalCoverage=138 ]
+(54) Pmax=? [ F<2700 totalCoverage=138 ]
+(55) Pmin=? [ F<900 totalCoverage=277 ]
+(56) Pmax=? [ F<900 totalCoverage=277 ]
+(57) Pmin=? [ F<1800 totalCoverage=277 ]
+(58) Pmax=? [ F<1800 totalCoverage=277 ]
+(59) Pmin=? [ F<2700 totalCoverage=277 ]
+(60) Pmax=? [ F<2700 totalCoverage=277 ]
+(61) Pmin=? [ F<900 totalCoverage=416 ]
+(62) Pmax=? [ F<900 totalCoverage=416 ]
+(63) Pmin=? [ F<1800 totalCoverage=416 ]
+(64) Pmax=? [ F<1800 totalCoverage=416 ]
+(65) Pmin=? [ F<2700 totalCoverage=416 ]
+(66) Pmax=? [ F<2700 totalCoverage=416 ]
+(67) Pmin=? [ F<900 totalCoverage=416 ]
+(68) Pmax=? [ F<900 totalCoverage=416 ]
+(69) Pmin=? [ F<1800 totalCoverage=416 ]
+(70) Pmax=? [ F<1800 totalCoverage=416 ]
+(71) Pmin=? [ F<2700 totalCoverage=416 ]
+(72) Pmax=? [ F<2700 totalCoverage=416 ]
+
+Type:        MDP
+Modules:     random_robot obstacle0 obstacle1 obstacle2 obstacle3 obstacle4 obstacle5 obstacle6 obstacle7 obstacle8 obstacle9 obstacle10 obstacle11 obstacle12 obstacle13 obstacle14 obstacle15 obstacle16 obstacle17 obstacle18 obstacle19 obstacle20 obstacle21 obstacle22 obstacle23 obstacle24 obstacle25 obstacle26 obstacle27 obstacle28 obstacle29 obstacle30 obstacle31 obstacle32 obstacle33 obstacle34 obstacle35 obstacle36 obstacle37 obstacle38 obstacle39 obstacle40 obstacle41 obstacle42 obstacle43 obstacle44 obstacle45 obstacle46 obstacle47 obstacle48 obstacle49 obstacle50 obstacle51 obstacle52 obstacle53 obstacle54 obstacle55 obstacle56 obstacle57 obstacle58 obstacle59 obstacle60 obstacle61 obstacle62 obstacle63 obstacle64 obstacle65 obstacle66 
+Variables:   x2 y2 dir counter checkLoc r1x1 r1x2 r1x3 r1x4 r1x5 r1x6 r1x7 r1x8 r1x9 r1x10 r1x11 r1x12 r1x13 r1x14 r1x15 r1x18 r1x19 r1x20 r1x21 r1x22 r1x23 r1x24 r2x1 r2x2 r2x3 r2x4 r2x5 r2x6 r2x7 r2x8 r2x9 r2x10 r2x11 r2x12 r2x13 r2x14 r2x15 r2x16 r2x19 r2x20 r2x21 r2x22 r2x23 r2x24 r3x1 r3x2 r3x3 r3x4 r3x5 r3x6 r3x7 r3x8 r3x9 r3x10 r3x11 r3x12 r3x13 r3x14 r3x15 r3x16 r3x17 r3x20 r3x21 r3x22 r3x23 r3x24 r4x1 r4x2 r4x3 r4x4 r4x5 r4x6 r4x7 r4x8 r4x9 r4x10 r4x11 r4x12 r4x13 r4x14 r4x15 r4x16 r4x17 r4x18 r4x21 r4x22 r4x23 r4x24 r5x1 r5x2 r5x3 r5x4 r5x5 r5x6 r5x7 r5x8 r5x9 r5x10 r5x11 r5x12 r5x13 r5x14 r5x15 r5x16 r5x17 r5x18 r5x19 r5x22 r5x23 r5x24 r6x1 r6x2 r6x3 r6x4 r6x5 r6x6 r6x7 r6x8 r6x9 r6x10 r6x11 r6x12 r6x13 r6x14 r6x15 r6x16 r6x17 r6x18 r6x19 r6x20 r6x23 r6x24 r7x2 r7x3 r7x4 r7x5 r7x6 r7x7 r7x8 r7x9 r7x10 r7x11 r7x12 r7x13 r7x14 r7x15 r7x16 r7x17 r7x18 r7x19 r7x20 r7x21 r7x24 r8x3 r8x4 r8x5 r8x6 r8x7 r8x8 r8x9 r8x10 r8x11 r8x12 r8x13 r8x14 r8x15 r8x16 r8x17 r8x18 r8x19 r8x20 r8x21 r8x22 r9x1 r9x4 r9x5 r9x6 r9x7 r9x8 r9x9 r9x10 r9x11 r9x12 r9x13 r9x14 r9x15 r9x16 r9x17 r9x18 r9x19 r9x20 r9x21 r9x22 r9x23 r10x1 r10x2 r10x5 r10x6 r10x7 r10x8 r10x9 r10x10 r10x11 r10x12 r10x13 r10x14 r10x15 r10x16 r10x17 r10x18 r10x19 r10x20 r10x21 r10x22 r10x23 r10x24 r11x1 r11x2 r11x3 r11x6 r11x7 r11x8 r11x9 r11x10 r11x11 r11x12 r11x13 r11x14 r11x15 r11x16 r11x17 r11x18 r11x19 r11x20 r11x21 r11x22 r11x23 r11x24 r12x1 r12x2 r12x3 r12x4 r12x7 r12x8 r12x9 r12x10 r12x11 r12x12 r12x13 r12x14 r12x15 r12x16 r12x17 r12x18 r12x19 r12x20 r12x21 r12x22 r12x23 r12x24 r13x1 r13x2 r13x3 r13x4 r13x5 r13x7 r13x8 r13x9 r13x10 r13x11 r13x12 r13x13 r13x14 r13x15 r13x16 r13x17 r13x18 r13x19 r13x20 r13x21 r13x22 r13x23 r13x24 r14x1 r14x2 r14x3 r14x4 r14x5 r14x7 r14x8 r14x9 r14x10 r14x11 r14x12 r14x13 r14x14 r14x15 r14x16 r14x17 r14x18 r14x19 r14x20 r14x21 r14x22 r14x23 r14x24 r15x1 r15x2 r15x3 r15x4 r15x5 r15x7 r15x8 r15x9 r15x10 r15x11 r15x12 r15x13 r15x14 r15x15 r15x16 r15x17 r15x18 r15x19 r15x20 r15x21 r15x22 r15x23 r15x24 r16x1 r16x2 r16x3 r16x4 r16x5 r16x7 r16x8 r16x9 r16x10 r16x11 r16x12 r16x13 r16x14 r16x15 r16x16 r16x17 r16x18 r16x19 r16x20 r16x21 r16x22 r16x23 r16x24 r17x1 r17x2 r17x3 r17x4 r17x5 r17x7 r17x8 r17x9 r17x10 r17x11 r17x12 r17x13 r17x14 r17x15 r17x16 r17x17 r17x18 r17x19 r17x20 r17x21 r17x22 r17x23 r17x24 r18x1 r18x2 r18x3 r18x4 r18x7 r18x8 r18x9 r18x10 r18x11 r18x12 r18x13 r18x14 r18x15 r18x16 r18x17 r18x18 r18x19 r18x20 r18x21 r18x22 r18x23 r18x24 r19x1 r19x2 r19x3 r19x6 r19x7 r19x8 r19x9 r19x10 r19x11 r19x12 r19x13 r19x14 r19x15 r19x16 r19x17 r19x18 r19x19 r19x20 r19x21 r19x22 r19x23 r19x24 r20x1 r20x2 r20x5 r20x6 r20x7 r20x8 r20x9 r20x10 r20x11 r20x12 r20x13 r20x14 r20x15 r20x16 r20x17 r20x18 r20x19 r20x20 r20x21 r20x22 r20x23 r20x24 r21x1 r21x4 r21x5 r21x6 r21x7 r21x8 r21x9 r21x10 r21x11 r21x12 r21x13 r21x14 r21x15 r21x16 r21x17 r21x18 r21x19 r21x20 r21x21 r21x22 r21x23 r22x3 r22x4 r22x5 r22x6 r22x7 r22x8 r22x9 r22x10 r22x11 r22x12 r22x13 r22x14 r22x15 r22x16 r22x17 r22x18 r22x19 r22x20 r22x21 r22x22 r23x2 r23x3 r23x4 r23x5 r23x6 r23x7 r23x8 r23x9 r23x10 r23x11 r23x12 r23x13 r23x14 r23x15 r23x16 r23x17 r23x18 r23x19 r23x20 r23x21 r23x24 r24x1 r24x2 r24x3 r24x4 r24x5 r24x6 r24x7 r24x8 r24x9 r24x10 r24x11 r24x12 r24x13 r24x14 r24x15 r24x16 r24x17 r24x18 r24x19 r24x20 r24x23 r24x24 r25x1 r25x2 r25x3 r25x4 r25x5 r25x6 r25x7 r25x8 r25x9 r25x10 r25x11 r25x12 r25x13 r25x14 r25x15 r25x16 r25x17 r25x18 r25x19 r25x22 r25x23 r25x24 r26x1 r26x2 r26x3 r26x4 r26x5 r26x6 r26x7 r26x8 r26x9 r26x10 r26x11 r26x12 r26x13 r26x14 r26x15 r26x16 r26x17 r26x18 r26x21 r26x22 r26x23 r26x24 r27x1 r27x2 r27x3 r27x4 r27x5 r27x6 r27x7 r27x8 r27x9 r27x10 r27x11 r27x12 r27x13 r27x14 r27x15 r27x16 r27x17 r27x20 r27x21 r27x22 r27x23 r27x24 r28x1 r28x2 r28x3 r28x4 r28x5 r28x6 r28x7 r28x8 r28x9 r28x10 r28x11 r28x12 r28x13 r28x14 r28x15 r28x16 r28x19 r28x20 r28x21 r28x22 r28x23 r28x24 r29x1 r29x2 r29x3 r29x4 r29x5 r29x6 r29x7 r29x8 r29x9 r29x10 r29x11 r29x12 r29x13 r29x14 r29x15 r29x18 r29x19 r29x20 r29x21 r29x22 r29x23 r29x24 r30x1 r30x2 r30x3 r30x4 r30x5 r30x6 r30x7 r30x8 r30x9 r30x10 r30x11 r30x12 r30x13 r30x14 r30x15 r30x17 r30x18 r30x19 r30x20 r30x21 r30x22 r30x23 r30x24 ox44 oy44 ox45 oy45 ox46 oy46 ox47 oy47 ox48 oy48 ox49 oy49 ox50 oy50 ox51 oy51 ox52 oy52 ox53 oy53 ox54 oy54 ox55 oy55 ox56 oy56 ox57 oy57 ox58 oy58 ox59 oy59 ox60 oy60 ox61 oy61 ox62 oy62 ox63 oy63 ox64 oy64 ox65 oy65 ox66 oy66 ox67 oy67 ox68 oy68 ox69 oy69 ox70 oy70 ox71 oy71 ox72 oy72 ox73 oy73 ox74 oy74 ox75 oy75 ox76 oy76 ox77 oy77 ox78 oy78 ox79 oy79 ox80 oy80 ox81 oy81 ox82 oy82 ox83 oy83 ox84 oy84 ox85 oy85 ox86 oy86 ox87 oy87 ox88 oy88 ox89 oy89 ox90 oy90 ox91 oy91 ox92 oy92 ox93 oy93 ox94 oy94 ox95 oy95 ox96 oy96 ox97 oy97 ox98 oy98 ox99 oy99 ox100 oy100 ox101 oy101 ox102 oy102 ox103 oy103 ox104 oy104 ox105 oy105 ox106 oy106 ox107 oy107 ox108 oy108 ox109 oy109 ox110 oy110 
+
+---------------------------------------------------------------------
+
+Simulating: Pmax=? [ F<1800 totalCoverage=416 ]
+
+Warning: For simulation, nondeterminism in MDP is resolved uniformly (resulting in DTMC).
+
+Simulation method: CI (Confidence Interval)
+Simulation method parameters: width=unknown, confidence=0.01, number of samples=300
+Simulation parameters: max path length=10000
+
+Sampling progress: [ 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% ]
+
+Sampling complete: 300 iterations in 83.339 seconds (average 0.28)
+Path length statistics: average 1.8e+03, min 1495, max 1800
+
+Simulation method parameters: width=0.07445554021361314, confidence=0.01, number of samples=300
+
+Simulation result details: confidence interval is 0.4866666666666667 +/- 0.07445554021361314, based on 99.0% confidence level
+
+Result: 0.4866666666666667 (with nondeterminism in MDP being resolved uniformly)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
 PRISM
 =====
 
 Version: 4.5
-Date: Sat Apr 25 23:10:00 EDT 2020
+Date: Sun Apr 26 15:34:11 EDT 2020
 Hostname: DESKTOP-JP4HOQA
 Memory limits: cudd=1g, java(heap)=3.6g
 Command line: prism model.pm properties.csl -prop 71 -sim -simmethod ci -simsamples 300
@@ -3949,12 +4051,114 @@ Parsing model file "model.pm"...
 
 Parsing properties file "properties.csl"...
 
-Error: Undeclared identifier ("totalCoverage", line 1, column 16).
+72 properties:
+(1) Pmin=? [ F<900 totalCoverage=193 ]
+(2) Pmax=? [ F<900 totalCoverage=193 ]
+(3) Pmin=? [ F<1800 totalCoverage=193 ]
+(4) Pmax=? [ F<1800 totalCoverage=193 ]
+(5) Pmin=? [ F<2700 totalCoverage=193 ]
+(6) Pmax=? [ F<2700 totalCoverage=193 ]
+(7) Pmin=? [ F<900 totalCoverage=385 ]
+(8) Pmax=? [ F<900 totalCoverage=385 ]
+(9) Pmin=? [ F<1800 totalCoverage=385 ]
+(10) Pmax=? [ F<1800 totalCoverage=385 ]
+(11) Pmin=? [ F<2700 totalCoverage=385 ]
+(12) Pmax=? [ F<2700 totalCoverage=385 ]
+(13) Pmin=? [ F<900 totalCoverage=578 ]
+(14) Pmax=? [ F<900 totalCoverage=578 ]
+(15) Pmin=? [ F<1800 totalCoverage=578 ]
+(16) Pmax=? [ F<1800 totalCoverage=578 ]
+(17) Pmin=? [ F<2700 totalCoverage=578 ]
+(18) Pmax=? [ F<2700 totalCoverage=578 ]
+(19) Pmin=? [ F<900 totalCoverage=694 ]
+(20) Pmax=? [ F<900 totalCoverage=694 ]
+(21) Pmin=? [ F<1800 totalCoverage=694 ]
+(22) Pmax=? [ F<1800 totalCoverage=694 ]
+(23) Pmin=? [ F<2700 totalCoverage=694 ]
+(24) Pmax=? [ F<2700 totalCoverage=694 ]
+(25) Pmin=? [ F<900 totalCoverage=550 ]
+(26) Pmax=? [ F<900 totalCoverage=550 ]
+(27) Pmin=? [ F<1800 totalCoverage=550 ]
+(28) Pmax=? [ F<1800 totalCoverage=550 ]
+(29) Pmin=? [ F<2700 totalCoverage=550 ]
+(30) Pmax=? [ F<2700 totalCoverage=550 ]
+(31) Pmin=? [ F<900 totalCoverage=1100 ]
+(32) Pmax=? [ F<900 totalCoverage=1100 ]
+(33) Pmin=? [ F<1800 totalCoverage=1100 ]
+(34) Pmax=? [ F<1800 totalCoverage=1100 ]
+(35) Pmin=? [ F<2700 totalCoverage=1100 ]
+(36) Pmax=? [ F<2700 totalCoverage=1100 ]
+(37) Pmin=? [ F<900 totalCoverage=1650 ]
+(38) Pmax=? [ F<900 totalCoverage=1650 ]
+(39) Pmin=? [ F<1800 totalCoverage=1650 ]
+(40) Pmax=? [ F<1800 totalCoverage=1650 ]
+(41) Pmin=? [ F<2700 totalCoverage=1650 ]
+(42) Pmax=? [ F<2700 totalCoverage=1650 ]
+(43) Pmin=? [ F<900 totalCoverage=1980 ]
+(44) Pmax=? [ F<900 totalCoverage=1980 ]
+(45) Pmin=? [ F<1800 totalCoverage=1980 ]
+(46) Pmax=? [ F<1800 totalCoverage=1980 ]
+(47) Pmin=? [ F<2700 totalCoverage=1980 ]
+(48) Pmax=? [ F<2700 totalCoverage=1980 ]
+(49) Pmin=? [ F<900 totalCoverage=138 ]
+(50) Pmax=? [ F<900 totalCoverage=138 ]
+(51) Pmin=? [ F<1800 totalCoverage=138 ]
+(52) Pmax=? [ F<1800 totalCoverage=138 ]
+(53) Pmin=? [ F<2700 totalCoverage=138 ]
+(54) Pmax=? [ F<2700 totalCoverage=138 ]
+(55) Pmin=? [ F<900 totalCoverage=277 ]
+(56) Pmax=? [ F<900 totalCoverage=277 ]
+(57) Pmin=? [ F<1800 totalCoverage=277 ]
+(58) Pmax=? [ F<1800 totalCoverage=277 ]
+(59) Pmin=? [ F<2700 totalCoverage=277 ]
+(60) Pmax=? [ F<2700 totalCoverage=277 ]
+(61) Pmin=? [ F<900 totalCoverage=416 ]
+(62) Pmax=? [ F<900 totalCoverage=416 ]
+(63) Pmin=? [ F<1800 totalCoverage=416 ]
+(64) Pmax=? [ F<1800 totalCoverage=416 ]
+(65) Pmin=? [ F<2700 totalCoverage=416 ]
+(66) Pmax=? [ F<2700 totalCoverage=416 ]
+(67) Pmin=? [ F<900 totalCoverage=416 ]
+(68) Pmax=? [ F<900 totalCoverage=416 ]
+(69) Pmin=? [ F<1800 totalCoverage=416 ]
+(70) Pmax=? [ F<1800 totalCoverage=416 ]
+(71) Pmin=? [ F<2700 totalCoverage=416 ]
+(72) Pmax=? [ F<2700 totalCoverage=416 ]
+
+Type:        MDP
+Modules:     random_robot obstacle0 obstacle1 obstacle2 obstacle3 obstacle4 obstacle5 obstacle6 obstacle7 obstacle8 obstacle9 obstacle10 obstacle11 obstacle12 obstacle13 obstacle14 obstacle15 obstacle16 obstacle17 obstacle18 obstacle19 obstacle20 obstacle21 obstacle22 obstacle23 obstacle24 obstacle25 obstacle26 obstacle27 obstacle28 obstacle29 obstacle30 obstacle31 obstacle32 obstacle33 obstacle34 obstacle35 obstacle36 obstacle37 obstacle38 obstacle39 obstacle40 obstacle41 obstacle42 obstacle43 obstacle44 obstacle45 obstacle46 obstacle47 obstacle48 obstacle49 obstacle50 obstacle51 obstacle52 obstacle53 obstacle54 obstacle55 obstacle56 obstacle57 obstacle58 obstacle59 obstacle60 obstacle61 obstacle62 obstacle63 obstacle64 obstacle65 obstacle66 
+Variables:   x2 y2 dir counter checkLoc r1x1 r1x2 r1x3 r1x4 r1x5 r1x6 r1x7 r1x8 r1x9 r1x10 r1x11 r1x12 r1x13 r1x14 r1x15 r1x18 r1x19 r1x20 r1x21 r1x22 r1x23 r1x24 r2x1 r2x2 r2x3 r2x4 r2x5 r2x6 r2x7 r2x8 r2x9 r2x10 r2x11 r2x12 r2x13 r2x14 r2x15 r2x16 r2x19 r2x20 r2x21 r2x22 r2x23 r2x24 r3x1 r3x2 r3x3 r3x4 r3x5 r3x6 r3x7 r3x8 r3x9 r3x10 r3x11 r3x12 r3x13 r3x14 r3x15 r3x16 r3x17 r3x20 r3x21 r3x22 r3x23 r3x24 r4x1 r4x2 r4x3 r4x4 r4x5 r4x6 r4x7 r4x8 r4x9 r4x10 r4x11 r4x12 r4x13 r4x14 r4x15 r4x16 r4x17 r4x18 r4x21 r4x22 r4x23 r4x24 r5x1 r5x2 r5x3 r5x4 r5x5 r5x6 r5x7 r5x8 r5x9 r5x10 r5x11 r5x12 r5x13 r5x14 r5x15 r5x16 r5x17 r5x18 r5x19 r5x22 r5x23 r5x24 r6x1 r6x2 r6x3 r6x4 r6x5 r6x6 r6x7 r6x8 r6x9 r6x10 r6x11 r6x12 r6x13 r6x14 r6x15 r6x16 r6x17 r6x18 r6x19 r6x20 r6x23 r6x24 r7x2 r7x3 r7x4 r7x5 r7x6 r7x7 r7x8 r7x9 r7x10 r7x11 r7x12 r7x13 r7x14 r7x15 r7x16 r7x17 r7x18 r7x19 r7x20 r7x21 r7x24 r8x3 r8x4 r8x5 r8x6 r8x7 r8x8 r8x9 r8x10 r8x11 r8x12 r8x13 r8x14 r8x15 r8x16 r8x17 r8x18 r8x19 r8x20 r8x21 r8x22 r9x1 r9x4 r9x5 r9x6 r9x7 r9x8 r9x9 r9x10 r9x11 r9x12 r9x13 r9x14 r9x15 r9x16 r9x17 r9x18 r9x19 r9x20 r9x21 r9x22 r9x23 r10x1 r10x2 r10x5 r10x6 r10x7 r10x8 r10x9 r10x10 r10x11 r10x12 r10x13 r10x14 r10x15 r10x16 r10x17 r10x18 r10x19 r10x20 r10x21 r10x22 r10x23 r10x24 r11x1 r11x2 r11x3 r11x6 r11x7 r11x8 r11x9 r11x10 r11x11 r11x12 r11x13 r11x14 r11x15 r11x16 r11x17 r11x18 r11x19 r11x20 r11x21 r11x22 r11x23 r11x24 r12x1 r12x2 r12x3 r12x4 r12x7 r12x8 r12x9 r12x10 r12x11 r12x12 r12x13 r12x14 r12x15 r12x16 r12x17 r12x18 r12x19 r12x20 r12x21 r12x22 r12x23 r12x24 r13x1 r13x2 r13x3 r13x4 r13x5 r13x7 r13x8 r13x9 r13x10 r13x11 r13x12 r13x13 r13x14 r13x15 r13x16 r13x17 r13x18 r13x19 r13x20 r13x21 r13x22 r13x23 r13x24 r14x1 r14x2 r14x3 r14x4 r14x5 r14x7 r14x8 r14x9 r14x10 r14x11 r14x12 r14x13 r14x14 r14x15 r14x16 r14x17 r14x18 r14x19 r14x20 r14x21 r14x22 r14x23 r14x24 r15x1 r15x2 r15x3 r15x4 r15x5 r15x7 r15x8 r15x9 r15x10 r15x11 r15x12 r15x13 r15x14 r15x15 r15x16 r15x17 r15x18 r15x19 r15x20 r15x21 r15x22 r15x23 r15x24 r16x1 r16x2 r16x3 r16x4 r16x5 r16x7 r16x8 r16x9 r16x10 r16x11 r16x12 r16x13 r16x14 r16x15 r16x16 r16x17 r16x18 r16x19 r16x20 r16x21 r16x22 r16x23 r16x24 r17x1 r17x2 r17x3 r17x4 r17x5 r17x7 r17x8 r17x9 r17x10 r17x11 r17x12 r17x13 r17x14 r17x15 r17x16 r17x17 r17x18 r17x19 r17x20 r17x21 r17x22 r17x23 r17x24 r18x1 r18x2 r18x3 r18x4 r18x7 r18x8 r18x9 r18x10 r18x11 r18x12 r18x13 r18x14 r18x15 r18x16 r18x17 r18x18 r18x19 r18x20 r18x21 r18x22 r18x23 r18x24 r19x1 r19x2 r19x3 r19x6 r19x7 r19x8 r19x9 r19x10 r19x11 r19x12 r19x13 r19x14 r19x15 r19x16 r19x17 r19x18 r19x19 r19x20 r19x21 r19x22 r19x23 r19x24 r20x1 r20x2 r20x5 r20x6 r20x7 r20x8 r20x9 r20x10 r20x11 r20x12 r20x13 r20x14 r20x15 r20x16 r20x17 r20x18 r20x19 r20x20 r20x21 r20x22 r20x23 r20x24 r21x1 r21x4 r21x5 r21x6 r21x7 r21x8 r21x9 r21x10 r21x11 r21x12 r21x13 r21x14 r21x15 r21x16 r21x17 r21x18 r21x19 r21x20 r21x21 r21x22 r21x23 r22x3 r22x4 r22x5 r22x6 r22x7 r22x8 r22x9 r22x10 r22x11 r22x12 r22x13 r22x14 r22x15 r22x16 r22x17 r22x18 r22x19 r22x20 r22x21 r22x22 r23x2 r23x3 r23x4 r23x5 r23x6 r23x7 r23x8 r23x9 r23x10 r23x11 r23x12 r23x13 r23x14 r23x15 r23x16 r23x17 r23x18 r23x19 r23x20 r23x21 r23x24 r24x1 r24x2 r24x3 r24x4 r24x5 r24x6 r24x7 r24x8 r24x9 r24x10 r24x11 r24x12 r24x13 r24x14 r24x15 r24x16 r24x17 r24x18 r24x19 r24x20 r24x23 r24x24 r25x1 r25x2 r25x3 r25x4 r25x5 r25x6 r25x7 r25x8 r25x9 r25x10 r25x11 r25x12 r25x13 r25x14 r25x15 r25x16 r25x17 r25x18 r25x19 r25x22 r25x23 r25x24 r26x1 r26x2 r26x3 r26x4 r26x5 r26x6 r26x7 r26x8 r26x9 r26x10 r26x11 r26x12 r26x13 r26x14 r26x15 r26x16 r26x17 r26x18 r26x21 r26x22 r26x23 r26x24 r27x1 r27x2 r27x3 r27x4 r27x5 r27x6 r27x7 r27x8 r27x9 r27x10 r27x11 r27x12 r27x13 r27x14 r27x15 r27x16 r27x17 r27x20 r27x21 r27x22 r27x23 r27x24 r28x1 r28x2 r28x3 r28x4 r28x5 r28x6 r28x7 r28x8 r28x9 r28x10 r28x11 r28x12 r28x13 r28x14 r28x15 r28x16 r28x19 r28x20 r28x21 r28x22 r28x23 r28x24 r29x1 r29x2 r29x3 r29x4 r29x5 r29x6 r29x7 r29x8 r29x9 r29x10 r29x11 r29x12 r29x13 r29x14 r29x15 r29x18 r29x19 r29x20 r29x21 r29x22 r29x23 r29x24 r30x1 r30x2 r30x3 r30x4 r30x5 r30x6 r30x7 r30x8 r30x9 r30x10 r30x11 r30x12 r30x13 r30x14 r30x15 r30x17 r30x18 r30x19 r30x20 r30x21 r30x22 r30x23 r30x24 ox44 oy44 ox45 oy45 ox46 oy46 ox47 oy47 ox48 oy48 ox49 oy49 ox50 oy50 ox51 oy51 ox52 oy52 ox53 oy53 ox54 oy54 ox55 oy55 ox56 oy56 ox57 oy57 ox58 oy58 ox59 oy59 ox60 oy60 ox61 oy61 ox62 oy62 ox63 oy63 ox64 oy64 ox65 oy65 ox66 oy66 ox67 oy67 ox68 oy68 ox69 oy69 ox70 oy70 ox71 oy71 ox72 oy72 ox73 oy73 ox74 oy74 ox75 oy75 ox76 oy76 ox77 oy77 ox78 oy78 ox79 oy79 ox80 oy80 ox81 oy81 ox82 oy82 ox83 oy83 ox84 oy84 ox85 oy85 ox86 oy86 ox87 oy87 ox88 oy88 ox89 oy89 ox90 oy90 ox91 oy91 ox92 oy92 ox93 oy93 ox94 oy94 ox95 oy95 ox96 oy96 ox97 oy97 ox98 oy98 ox99 oy99 ox100 oy100 ox101 oy101 ox102 oy102 ox103 oy103 ox104 oy104 ox105 oy105 ox106 oy106 ox107 oy107 ox108 oy108 ox109 oy109 ox110 oy110 
+
+---------------------------------------------------------------------
+
+Simulating: Pmin=? [ F<2700 totalCoverage=416 ]
+
+Warning: For simulation, nondeterminism in MDP is resolved uniformly (resulting in DTMC).
+
+Simulation method: CI (Confidence Interval)
+Simulation method parameters: width=unknown, confidence=0.01, number of samples=300
+Simulation parameters: max path length=10000
+
+Sampling progress: [ 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% ]
+
+Sampling complete: 300 iterations in 85.356 seconds (average 0.28)
+Path length statistics: average 1.8e+03, min 1495, max 2561
+
+Simulation method parameters: width=0.0, confidence=0.01, number of samples=300
+
+Simulation result details: confidence interval is 1.0 +/- 0.0, based on 99.0% confidence level
+
+Result: 1.0 (with nondeterminism in MDP being resolved uniformly)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
 PRISM
 =====
 
 Version: 4.5
-Date: Sat Apr 25 23:10:36 EDT 2020
+Date: Sun Apr 26 15:35:38 EDT 2020
 Hostname: DESKTOP-JP4HOQA
 Memory limits: cudd=1g, java(heap)=3.6g
 Command line: prism model.pm properties.csl -prop 72 -sim -simmethod ci -simsamples 300
@@ -3963,4 +4167,106 @@ Parsing model file "model.pm"...
 
 Parsing properties file "properties.csl"...
 
-Error: Undeclared identifier ("totalCoverage", line 1, column 16).
+72 properties:
+(1) Pmin=? [ F<900 totalCoverage=193 ]
+(2) Pmax=? [ F<900 totalCoverage=193 ]
+(3) Pmin=? [ F<1800 totalCoverage=193 ]
+(4) Pmax=? [ F<1800 totalCoverage=193 ]
+(5) Pmin=? [ F<2700 totalCoverage=193 ]
+(6) Pmax=? [ F<2700 totalCoverage=193 ]
+(7) Pmin=? [ F<900 totalCoverage=385 ]
+(8) Pmax=? [ F<900 totalCoverage=385 ]
+(9) Pmin=? [ F<1800 totalCoverage=385 ]
+(10) Pmax=? [ F<1800 totalCoverage=385 ]
+(11) Pmin=? [ F<2700 totalCoverage=385 ]
+(12) Pmax=? [ F<2700 totalCoverage=385 ]
+(13) Pmin=? [ F<900 totalCoverage=578 ]
+(14) Pmax=? [ F<900 totalCoverage=578 ]
+(15) Pmin=? [ F<1800 totalCoverage=578 ]
+(16) Pmax=? [ F<1800 totalCoverage=578 ]
+(17) Pmin=? [ F<2700 totalCoverage=578 ]
+(18) Pmax=? [ F<2700 totalCoverage=578 ]
+(19) Pmin=? [ F<900 totalCoverage=694 ]
+(20) Pmax=? [ F<900 totalCoverage=694 ]
+(21) Pmin=? [ F<1800 totalCoverage=694 ]
+(22) Pmax=? [ F<1800 totalCoverage=694 ]
+(23) Pmin=? [ F<2700 totalCoverage=694 ]
+(24) Pmax=? [ F<2700 totalCoverage=694 ]
+(25) Pmin=? [ F<900 totalCoverage=550 ]
+(26) Pmax=? [ F<900 totalCoverage=550 ]
+(27) Pmin=? [ F<1800 totalCoverage=550 ]
+(28) Pmax=? [ F<1800 totalCoverage=550 ]
+(29) Pmin=? [ F<2700 totalCoverage=550 ]
+(30) Pmax=? [ F<2700 totalCoverage=550 ]
+(31) Pmin=? [ F<900 totalCoverage=1100 ]
+(32) Pmax=? [ F<900 totalCoverage=1100 ]
+(33) Pmin=? [ F<1800 totalCoverage=1100 ]
+(34) Pmax=? [ F<1800 totalCoverage=1100 ]
+(35) Pmin=? [ F<2700 totalCoverage=1100 ]
+(36) Pmax=? [ F<2700 totalCoverage=1100 ]
+(37) Pmin=? [ F<900 totalCoverage=1650 ]
+(38) Pmax=? [ F<900 totalCoverage=1650 ]
+(39) Pmin=? [ F<1800 totalCoverage=1650 ]
+(40) Pmax=? [ F<1800 totalCoverage=1650 ]
+(41) Pmin=? [ F<2700 totalCoverage=1650 ]
+(42) Pmax=? [ F<2700 totalCoverage=1650 ]
+(43) Pmin=? [ F<900 totalCoverage=1980 ]
+(44) Pmax=? [ F<900 totalCoverage=1980 ]
+(45) Pmin=? [ F<1800 totalCoverage=1980 ]
+(46) Pmax=? [ F<1800 totalCoverage=1980 ]
+(47) Pmin=? [ F<2700 totalCoverage=1980 ]
+(48) Pmax=? [ F<2700 totalCoverage=1980 ]
+(49) Pmin=? [ F<900 totalCoverage=138 ]
+(50) Pmax=? [ F<900 totalCoverage=138 ]
+(51) Pmin=? [ F<1800 totalCoverage=138 ]
+(52) Pmax=? [ F<1800 totalCoverage=138 ]
+(53) Pmin=? [ F<2700 totalCoverage=138 ]
+(54) Pmax=? [ F<2700 totalCoverage=138 ]
+(55) Pmin=? [ F<900 totalCoverage=277 ]
+(56) Pmax=? [ F<900 totalCoverage=277 ]
+(57) Pmin=? [ F<1800 totalCoverage=277 ]
+(58) Pmax=? [ F<1800 totalCoverage=277 ]
+(59) Pmin=? [ F<2700 totalCoverage=277 ]
+(60) Pmax=? [ F<2700 totalCoverage=277 ]
+(61) Pmin=? [ F<900 totalCoverage=416 ]
+(62) Pmax=? [ F<900 totalCoverage=416 ]
+(63) Pmin=? [ F<1800 totalCoverage=416 ]
+(64) Pmax=? [ F<1800 totalCoverage=416 ]
+(65) Pmin=? [ F<2700 totalCoverage=416 ]
+(66) Pmax=? [ F<2700 totalCoverage=416 ]
+(67) Pmin=? [ F<900 totalCoverage=416 ]
+(68) Pmax=? [ F<900 totalCoverage=416 ]
+(69) Pmin=? [ F<1800 totalCoverage=416 ]
+(70) Pmax=? [ F<1800 totalCoverage=416 ]
+(71) Pmin=? [ F<2700 totalCoverage=416 ]
+(72) Pmax=? [ F<2700 totalCoverage=416 ]
+
+Type:        MDP
+Modules:     random_robot obstacle0 obstacle1 obstacle2 obstacle3 obstacle4 obstacle5 obstacle6 obstacle7 obstacle8 obstacle9 obstacle10 obstacle11 obstacle12 obstacle13 obstacle14 obstacle15 obstacle16 obstacle17 obstacle18 obstacle19 obstacle20 obstacle21 obstacle22 obstacle23 obstacle24 obstacle25 obstacle26 obstacle27 obstacle28 obstacle29 obstacle30 obstacle31 obstacle32 obstacle33 obstacle34 obstacle35 obstacle36 obstacle37 obstacle38 obstacle39 obstacle40 obstacle41 obstacle42 obstacle43 obstacle44 obstacle45 obstacle46 obstacle47 obstacle48 obstacle49 obstacle50 obstacle51 obstacle52 obstacle53 obstacle54 obstacle55 obstacle56 obstacle57 obstacle58 obstacle59 obstacle60 obstacle61 obstacle62 obstacle63 obstacle64 obstacle65 obstacle66 
+Variables:   x2 y2 dir counter checkLoc r1x1 r1x2 r1x3 r1x4 r1x5 r1x6 r1x7 r1x8 r1x9 r1x10 r1x11 r1x12 r1x13 r1x14 r1x15 r1x18 r1x19 r1x20 r1x21 r1x22 r1x23 r1x24 r2x1 r2x2 r2x3 r2x4 r2x5 r2x6 r2x7 r2x8 r2x9 r2x10 r2x11 r2x12 r2x13 r2x14 r2x15 r2x16 r2x19 r2x20 r2x21 r2x22 r2x23 r2x24 r3x1 r3x2 r3x3 r3x4 r3x5 r3x6 r3x7 r3x8 r3x9 r3x10 r3x11 r3x12 r3x13 r3x14 r3x15 r3x16 r3x17 r3x20 r3x21 r3x22 r3x23 r3x24 r4x1 r4x2 r4x3 r4x4 r4x5 r4x6 r4x7 r4x8 r4x9 r4x10 r4x11 r4x12 r4x13 r4x14 r4x15 r4x16 r4x17 r4x18 r4x21 r4x22 r4x23 r4x24 r5x1 r5x2 r5x3 r5x4 r5x5 r5x6 r5x7 r5x8 r5x9 r5x10 r5x11 r5x12 r5x13 r5x14 r5x15 r5x16 r5x17 r5x18 r5x19 r5x22 r5x23 r5x24 r6x1 r6x2 r6x3 r6x4 r6x5 r6x6 r6x7 r6x8 r6x9 r6x10 r6x11 r6x12 r6x13 r6x14 r6x15 r6x16 r6x17 r6x18 r6x19 r6x20 r6x23 r6x24 r7x2 r7x3 r7x4 r7x5 r7x6 r7x7 r7x8 r7x9 r7x10 r7x11 r7x12 r7x13 r7x14 r7x15 r7x16 r7x17 r7x18 r7x19 r7x20 r7x21 r7x24 r8x3 r8x4 r8x5 r8x6 r8x7 r8x8 r8x9 r8x10 r8x11 r8x12 r8x13 r8x14 r8x15 r8x16 r8x17 r8x18 r8x19 r8x20 r8x21 r8x22 r9x1 r9x4 r9x5 r9x6 r9x7 r9x8 r9x9 r9x10 r9x11 r9x12 r9x13 r9x14 r9x15 r9x16 r9x17 r9x18 r9x19 r9x20 r9x21 r9x22 r9x23 r10x1 r10x2 r10x5 r10x6 r10x7 r10x8 r10x9 r10x10 r10x11 r10x12 r10x13 r10x14 r10x15 r10x16 r10x17 r10x18 r10x19 r10x20 r10x21 r10x22 r10x23 r10x24 r11x1 r11x2 r11x3 r11x6 r11x7 r11x8 r11x9 r11x10 r11x11 r11x12 r11x13 r11x14 r11x15 r11x16 r11x17 r11x18 r11x19 r11x20 r11x21 r11x22 r11x23 r11x24 r12x1 r12x2 r12x3 r12x4 r12x7 r12x8 r12x9 r12x10 r12x11 r12x12 r12x13 r12x14 r12x15 r12x16 r12x17 r12x18 r12x19 r12x20 r12x21 r12x22 r12x23 r12x24 r13x1 r13x2 r13x3 r13x4 r13x5 r13x7 r13x8 r13x9 r13x10 r13x11 r13x12 r13x13 r13x14 r13x15 r13x16 r13x17 r13x18 r13x19 r13x20 r13x21 r13x22 r13x23 r13x24 r14x1 r14x2 r14x3 r14x4 r14x5 r14x7 r14x8 r14x9 r14x10 r14x11 r14x12 r14x13 r14x14 r14x15 r14x16 r14x17 r14x18 r14x19 r14x20 r14x21 r14x22 r14x23 r14x24 r15x1 r15x2 r15x3 r15x4 r15x5 r15x7 r15x8 r15x9 r15x10 r15x11 r15x12 r15x13 r15x14 r15x15 r15x16 r15x17 r15x18 r15x19 r15x20 r15x21 r15x22 r15x23 r15x24 r16x1 r16x2 r16x3 r16x4 r16x5 r16x7 r16x8 r16x9 r16x10 r16x11 r16x12 r16x13 r16x14 r16x15 r16x16 r16x17 r16x18 r16x19 r16x20 r16x21 r16x22 r16x23 r16x24 r17x1 r17x2 r17x3 r17x4 r17x5 r17x7 r17x8 r17x9 r17x10 r17x11 r17x12 r17x13 r17x14 r17x15 r17x16 r17x17 r17x18 r17x19 r17x20 r17x21 r17x22 r17x23 r17x24 r18x1 r18x2 r18x3 r18x4 r18x7 r18x8 r18x9 r18x10 r18x11 r18x12 r18x13 r18x14 r18x15 r18x16 r18x17 r18x18 r18x19 r18x20 r18x21 r18x22 r18x23 r18x24 r19x1 r19x2 r19x3 r19x6 r19x7 r19x8 r19x9 r19x10 r19x11 r19x12 r19x13 r19x14 r19x15 r19x16 r19x17 r19x18 r19x19 r19x20 r19x21 r19x22 r19x23 r19x24 r20x1 r20x2 r20x5 r20x6 r20x7 r20x8 r20x9 r20x10 r20x11 r20x12 r20x13 r20x14 r20x15 r20x16 r20x17 r20x18 r20x19 r20x20 r20x21 r20x22 r20x23 r20x24 r21x1 r21x4 r21x5 r21x6 r21x7 r21x8 r21x9 r21x10 r21x11 r21x12 r21x13 r21x14 r21x15 r21x16 r21x17 r21x18 r21x19 r21x20 r21x21 r21x22 r21x23 r22x3 r22x4 r22x5 r22x6 r22x7 r22x8 r22x9 r22x10 r22x11 r22x12 r22x13 r22x14 r22x15 r22x16 r22x17 r22x18 r22x19 r22x20 r22x21 r22x22 r23x2 r23x3 r23x4 r23x5 r23x6 r23x7 r23x8 r23x9 r23x10 r23x11 r23x12 r23x13 r23x14 r23x15 r23x16 r23x17 r23x18 r23x19 r23x20 r23x21 r23x24 r24x1 r24x2 r24x3 r24x4 r24x5 r24x6 r24x7 r24x8 r24x9 r24x10 r24x11 r24x12 r24x13 r24x14 r24x15 r24x16 r24x17 r24x18 r24x19 r24x20 r24x23 r24x24 r25x1 r25x2 r25x3 r25x4 r25x5 r25x6 r25x7 r25x8 r25x9 r25x10 r25x11 r25x12 r25x13 r25x14 r25x15 r25x16 r25x17 r25x18 r25x19 r25x22 r25x23 r25x24 r26x1 r26x2 r26x3 r26x4 r26x5 r26x6 r26x7 r26x8 r26x9 r26x10 r26x11 r26x12 r26x13 r26x14 r26x15 r26x16 r26x17 r26x18 r26x21 r26x22 r26x23 r26x24 r27x1 r27x2 r27x3 r27x4 r27x5 r27x6 r27x7 r27x8 r27x9 r27x10 r27x11 r27x12 r27x13 r27x14 r27x15 r27x16 r27x17 r27x20 r27x21 r27x22 r27x23 r27x24 r28x1 r28x2 r28x3 r28x4 r28x5 r28x6 r28x7 r28x8 r28x9 r28x10 r28x11 r28x12 r28x13 r28x14 r28x15 r28x16 r28x19 r28x20 r28x21 r28x22 r28x23 r28x24 r29x1 r29x2 r29x3 r29x4 r29x5 r29x6 r29x7 r29x8 r29x9 r29x10 r29x11 r29x12 r29x13 r29x14 r29x15 r29x18 r29x19 r29x20 r29x21 r29x22 r29x23 r29x24 r30x1 r30x2 r30x3 r30x4 r30x5 r30x6 r30x7 r30x8 r30x9 r30x10 r30x11 r30x12 r30x13 r30x14 r30x15 r30x17 r30x18 r30x19 r30x20 r30x21 r30x22 r30x23 r30x24 ox44 oy44 ox45 oy45 ox46 oy46 ox47 oy47 ox48 oy48 ox49 oy49 ox50 oy50 ox51 oy51 ox52 oy52 ox53 oy53 ox54 oy54 ox55 oy55 ox56 oy56 ox57 oy57 ox58 oy58 ox59 oy59 ox60 oy60 ox61 oy61 ox62 oy62 ox63 oy63 ox64 oy64 ox65 oy65 ox66 oy66 ox67 oy67 ox68 oy68 ox69 oy69 ox70 oy70 ox71 oy71 ox72 oy72 ox73 oy73 ox74 oy74 ox75 oy75 ox76 oy76 ox77 oy77 ox78 oy78 ox79 oy79 ox80 oy80 ox81 oy81 ox82 oy82 ox83 oy83 ox84 oy84 ox85 oy85 ox86 oy86 ox87 oy87 ox88 oy88 ox89 oy89 ox90 oy90 ox91 oy91 ox92 oy92 ox93 oy93 ox94 oy94 ox95 oy95 ox96 oy96 ox97 oy97 ox98 oy98 ox99 oy99 ox100 oy100 ox101 oy101 ox102 oy102 ox103 oy103 ox104 oy104 ox105 oy105 ox106 oy106 ox107 oy107 ox108 oy108 ox109 oy109 ox110 oy110 
+
+---------------------------------------------------------------------
+
+Simulating: Pmax=? [ F<2700 totalCoverage=416 ]
+
+Warning: For simulation, nondeterminism in MDP is resolved uniformly (resulting in DTMC).
+
+Simulation method: CI (Confidence Interval)
+Simulation method parameters: width=unknown, confidence=0.01, number of samples=300
+Simulation parameters: max path length=10000
+
+Sampling progress: [ 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% ]
+
+Sampling complete: 300 iterations in 66.276 seconds (average 0.22)
+Path length statistics: average 1.8e+03, min 1515, max 2640
+
+Simulation method parameters: width=0.0, confidence=0.01, number of samples=300
+
+Simulation result details: confidence interval is 1.0 +/- 0.0, based on 99.0% confidence level
+
+Result: 1.0 (with nondeterminism in MDP being resolved uniformly)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
