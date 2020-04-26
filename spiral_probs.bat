@@ -1,7 +1,7 @@
 @echo off
 
 :: Set prism directory (no quotes)
-set PRISM_DIR=D:\Program Files\prism-4.5
+set PRISM_DIR=C:\Program Files\prism-4.5
 
 :: Add PRISM to path
 path=%PRISM_DIR%\lib;%path%
