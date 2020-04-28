@@ -16,15 +16,15 @@ set CP=%PRISM_DIR%\lib\prism.jar;%PRISM_DIR%\classes;%PRISM_DIR%;%PRISM_DIR%\lib
 
 
 python random_model_generator.py 2 > model_random.pm
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 1 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 2 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 3 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 4 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 5 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 6 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 7 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 8 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 9 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 10 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 11 -sim -simmethod ci -simsamples 75
-java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 12 -sim -simmethod ci -simsamples 75
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 1 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 2 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 3 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 4 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 5 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 6 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 7 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 8 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 9 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 10 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 11 -sim -simmethod ci -simsamples 200
+java -Xmx4g -Xss8M -Djava.library.path="%PRISM_DIR%\lib" -classpath "%CP%" prism.PrismCL model_random.pm properties.csl -prop 12 -sim -simmethod ci -simsamples 200
